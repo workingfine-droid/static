@@ -38,8 +38,8 @@ export default function SolutionsSection() {
               Custom Software Development
             </h4>
             <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
-              End-to-end development of web and enterprise applications
-              tailored to your business needs.
+              End-to-end development of web and enterprise applications tailored
+              to your business needs.
             </p>
           </motion.div>
           <motion.div

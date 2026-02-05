@@ -23,8 +23,8 @@ export default function AboutSection() {
               Who We Are
             </h4>
             <p className="text-[#e0e0ff]/80 text-sm leading-relaxed mb-4">
-              Technotouch Solutions Pvt. Ltd. is an ISO 9001:2008 certified
-              IT solutions company established in 2014, specializing in form
+              Technotouch Solutions Pvt. Ltd. is an ISO 9001:2008 certified IT
+              solutions company established in 2014, specializing in form
               processing and automated data capture.
             </p>
             <p className="text-[#e0e0ff]/80 text-sm leading-relaxed mb-4">
@@ -67,8 +67,8 @@ export default function AboutSection() {
             </h4>
             <p className="text-[#e0e0ff]/80 text-sm leading-relaxed">
               To eliminate manual work, improve accuracy, and enable
-              organizations to scale efficiently through intelligent
-              automation and cutting-edge technology solutions.
+              organizations to scale efficiently through intelligent automation
+              and cutting-edge technology solutions.
             </p>
           </motion.div>
           <motion.div
@@ -82,12 +82,12 @@ export default function AboutSection() {
               Our Expertise & Capabilities
             </h4>
             <p className="text-[#e0e0ff]/80 text-sm leading-relaxed mb-4">
-              With over a decade of experience in form processing and
-              automated data capture, we represent the cutting edge of
-              document imaging technology. We have in-house facilities to
-              develop custom applications and provide complete solutions
-              including software, backlog conversion, hardware integration,
-              training, and technical support.
+              With over a decade of experience in form processing and automated
+              data capture, we represent the cutting edge of document imaging
+              technology. We have in-house facilities to develop custom
+              applications and provide complete solutions including software,
+              backlog conversion, hardware integration, training, and technical
+              support.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
               <div>

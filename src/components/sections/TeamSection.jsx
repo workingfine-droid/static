@@ -12,12 +12,11 @@ export default function TeamSection() {
               Our Mission
             </h4>
             <p className="text-[#e0e0ff]/80 mb-4 text-sm md:text-base leading-relaxed">
-              To be the best in the field of form processing and automated
-              data capture solutions — be it paper forms or electronic forms
-              — and to be the first choice for all form processing
-              outsourcing. To constantly invest in technology and create
-              value propositions to a wide spectrum of businesses for their
-              data capture needs.
+              To be the best in the field of form processing and automated data
+              capture solutions — be it paper forms or electronic forms — and to
+              be the first choice for all form processing outsourcing. To
+              constantly invest in technology and create value propositions to a
+              wide spectrum of businesses for their data capture needs.
             </p>
           </div>
           <div>
@@ -25,9 +24,9 @@ export default function TeamSection() {
               Join Our Team
             </h4>
             <p className="text-[#e0e0ff]/80 mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
-              We're always looking for talented individuals to join our
-              growing team. If you're passionate about technology and want
-              to work on challenging projects, we'd love to hear from you.
+              We're always looking for talented individuals to join our growing
+              team. If you're passionate about technology and want to work on
+              challenging projects, we'd love to hear from you.
             </p>
             <a
               href="mailto:contact@technotouch.in"

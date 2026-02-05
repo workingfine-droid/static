@@ -9,9 +9,9 @@ export default function HomeSection() {
         subtitle="for Data Processing, Examination Automation & Custom Software"
       >
         <p className="text-base sm:text-lg md:text-xl mb-4 text-center md:text-left font-orbitron">
-          Technotouch Solutions Pvt. Ltd. helps organizations transform
-          manual processes into accurate, scalable, and secure digital
-          systems using cutting-edge technology.
+          Technotouch Solutions Pvt. Ltd. helps organizations transform manual
+          processes into accurate, scalable, and secure digital systems using
+          cutting-edge technology.
         </p>
         <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center md:items-start">
           <a

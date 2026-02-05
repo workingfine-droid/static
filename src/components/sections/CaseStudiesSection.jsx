@@ -43,8 +43,8 @@ export default function CaseStudiesSection() {
                 Solution
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
-                Implemented complete OMR/ICR examination system with
-                automated evaluation
+                Implemented complete OMR/ICR examination system with automated
+                evaluation
               </p>
             </div>
             <div className="mb-4">
@@ -52,8 +52,7 @@ export default function CaseStudiesSection() {
                 Technology
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
-                OMR/ICR processing, custom evaluation software, cloud
-                storage
+                OMR/ICR processing, custom evaluation software, cloud storage
               </p>
             </div>
             <div className="border-t border-[#00f2ff]/20 pt-4">
@@ -152,8 +151,8 @@ export default function CaseStudiesSection() {
                 Solution
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
-                High-speed scanning, ICR extraction, and digital archiving
-                with searchable database
+                High-speed scanning, ICR extraction, and digital archiving with
+                searchable database
               </p>
             </div>
             <div className="mb-4">
@@ -207,8 +206,7 @@ export default function CaseStudiesSection() {
                 Solution
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
-                Dedicated 24/7 technical support team with proactive
-                monitoring
+                Dedicated 24/7 technical support team with proactive monitoring
               </p>
             </div>
             <div className="mb-4">

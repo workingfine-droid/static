@@ -104,16 +104,15 @@ export default function ServicesSection() {
               Custom Software Development
             </h4>
             <p className="text-[#e0e0ff]/80 text-sm mb-3">
-              Fully customized software solutions covering the entire
-              lifecycle.
+              Fully customized software solutions covering the entire lifecycle.
             </p>
             <div className="mb-3">
               <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
                 Our Process
               </div>
               <p className="text-[#e0e0ff]/70 text-xs mb-2">
-                Requirements Gathering → System Design → Development &
-                Coding → Testing & Deployment
+                Requirements Gathering → System Design → Development & Coding →
+                Testing & Deployment
               </p>
             </div>
             <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
@@ -235,8 +234,7 @@ export default function ServicesSection() {
               24/7 Technical Support
             </h4>
             <p className="text-[#e0e0ff]/80 text-sm mb-3">
-              Comprehensive hardware, network, and software support
-              services.
+              Comprehensive hardware, network, and software support services.
             </p>
             <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
               Coverage
@@ -251,8 +249,7 @@ export default function ServicesSection() {
               Process
             </h5>
             <p className="text-[#e0e0ff]/70 text-xs mb-3">
-              Issue identification → Root cause analysis → Fix →
-              Verification
+              Issue identification → Root cause analysis → Fix → Verification
             </p>
             <a
               href="#contact"
