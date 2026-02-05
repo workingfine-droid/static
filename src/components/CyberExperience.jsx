@@ -272,7 +272,7 @@ export default function CyberExperience() {
         {/* Mobile/Tablet Menu Dropdown */}
         <div
           id="mobile-nav-menu"
-          className="absolute top-full left-0 w-full bg-[#020205] border-t border-[#00f2ff]/10 py-4 px-8 flex-col gap-4 font-orbitron text-xs text-[#e0e0ff]/80 uppercase tracking-widest shadow-lg hidden lg:hidden z-[101]"
+          className="absolute top-full left-0 w-full bg-[#020205] border-t border-[#00f2ff]/10 py-4 px-8 flex flex-col gap-4 font-orbitron text-xs text-[#e0e0ff]/80 uppercase tracking-widest shadow-lg hidden lg:hidden z-[101]"
         >
           {["Home", "Solutions", "Services", "Clients", "About", "Contact"].map(
             (item) => (

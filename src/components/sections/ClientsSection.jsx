@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Section } from "../shared/SharedComponents";
+import styles from "./ClientsSection.module.css";
 
 export default function ClientsSection() {
   return (
@@ -24,8 +25,10 @@ export default function ClientsSection() {
         </motion.p>
 
         {/* Floating Carousel with Controls */}
-        <div className="relative overflow-hidden py-8">
-          {/* Navigation Arrows */}
+        <div
+          className={`relative overflow-x-auto py-6 sm:py-8 select-none ${styles["hide-scrollbar"]}`}
+        >
+          {/* Navigation Arrows: Hide on mobile */}
           <button
             onClick={() => {
               const carousel = document.getElementById("client-carousel");
@@ -37,10 +40,11 @@ export default function ClientsSection() {
                 }, 1000);
               }
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-[#00f2ff]/20 border border-[#00f2ff]/50 rounded-full flex items-center justify-center hover:bg-[#00f2ff]/30 transition-all duration-300 group"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#00f2ff]/20 border border-[#00f2ff]/50 rounded-full items-center justify-center hover:bg-[#00f2ff]/30 transition-all duration-300 group hidden sm:flex"
+            aria-label="Scroll left"
           >
             <svg
-              className="w-6 h-6 text-[#00f2ff] group-hover:text-white transition-colors"
+              className="w-5 h-5 text-[#00f2ff] group-hover:text-white transition-colors"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -65,10 +69,11 @@ export default function ClientsSection() {
                 }, 1000);
               }
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-[#00f2ff]/20 border border-[#00f2ff]/50 rounded-full flex items-center justify-center hover:bg-[#00f2ff]/30 transition-all duration-300 group"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#00f2ff]/20 border border-[#00f2ff]/50 rounded-full items-center justify-center hover:bg-[#00f2ff]/30 transition-all duration-300 group hidden sm:flex"
+            aria-label="Scroll right"
           >
             <svg
-              className="w-6 h-6 text-[#00f2ff] group-hover:text-white transition-colors"
+              className="w-5 h-5 text-[#00f2ff] group-hover:text-white transition-colors"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -90,11 +95,9 @@ export default function ClientsSection() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className="flex items-center gap-8 whitespace-nowrap overflow-x-auto"
+            className={`flex items-center gap-3 sm:gap-6 md:gap-8 whitespace-nowrap overflow-x-auto touch-pan-x ${styles["hide-scrollbar"]}`}
             style={{
               width: "200%",
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
             }}
           >
             {[
@@ -326,13 +329,13 @@ export default function ClientsSection() {
                     scale: 1.05,
                     transition: { duration: 0.3 },
                   }}
-                  className="bg-[#10131a]/90 border border-[#00f2ff]/30 rounded-xl p-6 shadow-2xl hover:border-[#00f2ff]/70 transition-all duration-500 group backdrop-blur-sm min-w-[280px] flex-shrink-0"
+                  className="bg-[#10131a]/90 border border-[#00f2ff]/30 rounded-xl p-2 sm:p-3 md:p-5 shadow-2xl hover:border-[#00f2ff]/70 transition-all duration-500 group backdrop-blur-sm min-w-[120px] sm:min-w-[160px] md:min-w-[200px] max-w-[80vw] flex-shrink-0 overflow-hidden"
                 >
                   {client.hasLogo ? (
                     /* Logo Card */
                     <>
-                      <div className="flex justify-center mb-4">
-                        <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2 shadow-lg">
+                      <div className="flex justify-center mb-2 sm:mb-3">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-white rounded-lg flex items-center justify-center p-1 md:p-2 shadow-lg">
                           <img
                             src={client.src}
                             alt={client.name}
@@ -341,10 +344,10 @@ export default function ClientsSection() {
                         </div>
                       </div>
                       <div className="text-center">
-                        <h4 className="font-orbitron text-white text-sm mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
+                        <h4 className="font-orbitron text-white text-[0.7rem] sm:text-xs md:text-sm mb-0.5 sm:mb-1 md:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
                           {client.name}
                         </h4>
-                        <p className="text-[#e0e0ff]/70 text-xs font-orbitron uppercase">
+                        <p className="text-[#e0e0ff]/70 text-[0.55rem] sm:text-[0.65rem] md:text-xs font-orbitron uppercase">
                           {client.location}
                         </p>
                       </div>
@@ -352,18 +355,18 @@ export default function ClientsSection() {
                   ) : (
                     /* Name Only Card */
                     <>
-                      <div className="flex justify-center mb-4">
-                        <div className="w-16 h-16 bg-[#00f2ff]/10 border-2 border-[#00f2ff]/30 rounded-lg flex items-center justify-center">
-                          <div className="text-[#00f2ff] text-2xl font-orbitron font-bold">
+                      <div className="flex justify-center mb-2 sm:mb-3">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-[#00f2ff]/10 border-2 border-[#00f2ff]/30 rounded-lg flex items-center justify-center">
+                          <div className="text-[#00f2ff] text-base sm:text-lg md:text-2xl font-orbitron font-bold">
                             {client.name.charAt(0)}
                           </div>
                         </div>
                       </div>
                       <div className="text-center">
-                        <h4 className="font-orbitron text-white text-sm mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
+                        <h4 className="font-orbitron text-white text-[0.7rem] sm:text-xs md:text-sm mb-0.5 sm:mb-1 md:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
                           {client.name}
                         </h4>
-                        <p className="text-[#e0e0ff]/70 text-xs font-orbitron uppercase">
+                        <p className="text-[#e0e0ff]/70 text-[0.55rem] sm:text-[0.65rem] md:text-xs font-orbitron uppercase">
                           {client.location}
                         </p>
                       </div>
