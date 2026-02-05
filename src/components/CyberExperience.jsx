@@ -1,20 +1,66 @@
+// Import icons from react-icons (must be at the very top)
+import {
+  FaReact,
+  FaAngular,
+  FaHtml5,
+  FaCss3Alt,
+  FaNodeJs,
+  FaPython,
+  FaJava,
+  FaPhp,
+  FaAws,
+  FaDocker,
+  FaMicrosoft,
+  FaDatabase,
+  FaSearch,
+  FaCode,
+  FaClipboardCheck,
+  FaHeadset,
+} from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiExpress,
+  SiSpring,
+  SiDotnet,
+  SiDjango,
+  SiMongodb,
+  SiFirebase,
+  SiMysql,
+  SiOracle,
+  SiJavascript,
+  SiKubernetes,
+} from "react-icons/si";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
+import Journey from "./CyberExperience/Journey";
+import ISOStats from "./CyberExperience/ISOStats";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Section = ({ children, className = "" }) => (
-  <section className={`min-h-screen flex items-center px-[10%] pointer-events-none ${className}`}>
+const Section = ({ children, className = "", id }) => (
+  <section
+    id={id}
+    className={`min-h-screen flex items-center px-[10%] pointer-events-none ${className}`}
+    style={{ scrollMarginTop: "100px" }}
+  >
     <div className="pointer-events-auto w-full max-w-[1200px] mx-auto">
       {children}
     </div>
   </section>
 );
 
-const GlassCard = ({ title, subtitle, tag, children, delay = 0, align = "left" }) => (
+const GlassCard = ({
+  title,
+  subtitle,
+  tag,
+  children,
+  delay = 0,
+  align = "left",
+}) => (
   <motion.div
     initial={{ opacity: 0, x: align === "left" ? -50 : 50, y: 20 }}
     whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -31,10 +77,14 @@ const GlassCard = ({ title, subtitle, tag, children, delay = 0, align = "left" }
     )}
     <h2 className="font-orbitron text-4xl md:text-5xl uppercase tracking-tighter mb-4 bg-gradient-to-r from-white via-white to-[#00f2ff]/50 bg-clip-text text-transparent leading-none">
       {title}
-      {subtitle && <span className="block text-[#00f2ff] mt-2 text-2xl md:text-3xl opacity-80">{subtitle}</span>}
+      {subtitle && (
+        <span className="block text-[#00f2ff] mt-2 text-2xl md:text-3xl opacity-80">
+          {subtitle}
+        </span>
+      )}
     </h2>
     <div className="h-[2px] w-12 bg-gradient-to-r from-[#00f2ff] to-transparent mb-8 group-hover:w-24 transition-all duration-500" />
-    <div className="text-[#e0e0ff]/70 leading-relaxed font-light text-base md:text-lg space-y-4">
+    <div className="text-[#e0e0ff]/70 leading-relaxed font-orbitron text-sm md:text-base space-y-4">
       {children}
     </div>
   </motion.div>
@@ -49,11 +99,16 @@ export default function CyberExperience() {
 
     const canvas = canvasRef.current;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
-      alpha: true
+      alpha: true,
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -67,28 +122,31 @@ export default function CyberExperience() {
     for (let i = 0; i < particlesCount * 3; i++) {
       posArray[i] = (Math.random() - 0.5) * 60;
     }
-    particlesGeometry.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(posArray, 3),
+    );
     const particlesMaterial = new THREE.PointsMaterial({
       color: 0x00f2ff,
       size: 0.03,
       transparent: true,
       opacity: 0.3,
-      blending: THREE.AdditiveBlending
+      blending: THREE.AdditiveBlending,
     });
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particles);
 
     // --- The Core (Hexagonal/Geometric Shield) ---
     const coreGroup = new THREE.Group();
-    
+
     // Outer Shell - Geometric lines
     const outerGeo = new THREE.IcosahedronGeometry(2.5, 1);
     const edges = new THREE.EdgesGeometry(outerGeo);
-    const lineMat = new THREE.LineBasicMaterial({ 
-      color: 0x00f2ff, 
-      transparent: true, 
+    const lineMat = new THREE.LineBasicMaterial({
+      color: 0x00f2ff,
+      transparent: true,
       opacity: 0.4,
-      linewidth: 2
+      linewidth: 2,
     });
     const outerShield = new THREE.LineSegments(edges, lineMat);
     coreGroup.add(outerShield);
@@ -96,10 +154,10 @@ export default function CyberExperience() {
     // Middle Shell - More detailed
     const midGeo = new THREE.IcosahedronGeometry(2.2, 2);
     const midEdges = new THREE.EdgesGeometry(midGeo);
-    const midLineMat = new THREE.LineBasicMaterial({ 
-      color: 0x7000ff, 
-      transparent: true, 
-      opacity: 0.2 
+    const midLineMat = new THREE.LineBasicMaterial({
+      color: 0x7000ff,
+      transparent: true,
+      opacity: 0.2,
     });
     const midShield = new THREE.LineSegments(midEdges, midLineMat);
     coreGroup.add(midShield);
@@ -109,7 +167,7 @@ export default function CyberExperience() {
     const innerMat = new THREE.MeshBasicMaterial({
       color: 0x00f2ff,
       transparent: true,
-      opacity: 0.05
+      opacity: 0.05,
     });
     const coreSphere = new THREE.Mesh(innerGeo, innerMat);
     coreGroup.add(coreSphere);
@@ -120,7 +178,7 @@ export default function CyberExperience() {
     const pLight = new THREE.PointLight(0x00f2ff, 10, 20);
     pLight.position.set(2, 3, 4);
     scene.add(pLight);
-    
+
     const pLight2 = new THREE.PointLight(0x7000ff, 8, 20);
     pLight2.position.set(-2, -3, 2);
     scene.add(pLight2);
@@ -133,8 +191,8 @@ export default function CyberExperience() {
         trigger: containerRef.current,
         start: "top top",
         end: "bottom bottom",
-        scrub: 1.5
-      }
+        scrub: 1.5,
+      },
     });
 
     tl.to(camera.position, { z: 3, y: 0.5, ease: "none" })
@@ -146,8 +204,8 @@ export default function CyberExperience() {
     // --- Interaction ---
     const mouse = { x: 0, y: 0 };
     const handleMouseMove = (e) => {
-      mouse.x = (e.clientX / window.innerWidth) - 0.5;
-      mouse.y = (e.clientY / window.innerHeight) - 0.5;
+      mouse.x = e.clientX / window.innerWidth - 0.5;
+      mouse.y = e.clientY / window.innerHeight - 0.5;
     };
     window.addEventListener("mousemove", handleMouseMove);
 
@@ -160,14 +218,14 @@ export default function CyberExperience() {
 
     const animate = () => {
       const raf = requestAnimationFrame(animate);
-      
+
       coreGroup.rotation.y += 0.002;
       coreGroup.rotation.z += 0.001;
       midShield.rotation.y -= 0.004;
       particles.rotation.y += 0.0002;
 
-      camera.position.x += (mouse.x * 3 - camera.position.x) * 0.05;
-      camera.position.y += (-mouse.y * 3 - camera.position.y) * 0.05;
+      camera.position.x += (mouse.x * 3 - camera.position.x) * 0.08;
+      camera.position.y += (-mouse.y * 3 - camera.position.y) * 0.08;
       camera.lookAt(0, 0, 0);
 
       renderer.render(scene, camera);
@@ -178,172 +236,1656 @@ export default function CyberExperience() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full bg-[#020205] text-[#e0e0ff] font-inter overflow-x-hidden selection:bg-[#00f2ff] selection:text-black">
-      <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-10 pointer-events-none" />
-      
+    <div
+      ref={containerRef}
+      className="relative w-full bg-[#020205] text-[#e0e0ff] font-inter overflow-x-hidden selection:bg-[#00f2ff] selection:text-black cursor-none"
+    >
+      {/* Custom Cursor */}
+      <div
+        className="fixed w-6 h-6 border-2 border-[#00f2ff] rounded-full pointer-events-none z-[9999] mix-blend-difference transition-transform duration-100 ease-out"
+        style={{
+          left: "0px",
+          top: "0px",
+          transform: "translate(-50%, -50%)",
+        }}
+        ref={(el) => {
+          if (el) {
+            const updateCursor = (e) => {
+              el.style.left = e.clientX + "px";
+              el.style.top = e.clientY + "px";
+            };
+            const handleMouseEnter = () => {
+              el.style.transform = "translate(-50%, -50%) scale(1.5)";
+              el.style.backgroundColor = "#00f2ff";
+            };
+            const handleMouseLeave = () => {
+              el.style.transform = "translate(-50%, -50%) scale(1)";
+              el.style.backgroundColor = "transparent";
+            };
+            document.addEventListener("mousemove", updateCursor);
+            document.querySelectorAll("a, button").forEach((elem) => {
+              elem.addEventListener("mouseenter", handleMouseEnter);
+              elem.addEventListener("mouseleave", handleMouseLeave);
+            });
+          }
+        }}
+      />
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 w-full h-full z-10 pointer-events-none"
+      />
+
       <nav className="fixed top-0 w-full px-8 py-6 flex justify-between items-center z-[100] bg-gradient-to-b from-[#020205] to-transparent">
-        <div className="font-orbitron font-bold text-2xl tracking-tighter text-white flex items-center gap-2">
-          <div className="w-8 h-8 border-2 border-[#00f2ff] rotate-45 flex items-center justify-center">
-            <div className="w-4 h-4 bg-[#00f2ff]/50" />
+        <div className="flex items-center gap-2">
+          <div className="bg-white/10 border border-[#00f2ff]/40 rounded-lg p-1 flex items-center shadow-md">
+            <img
+              src="/companylogo/ttspl.png"
+              alt="TTSPL Logo"
+              className="w-10 h-10 object-contain"
+            />
           </div>
-          AEGIS.SYS
+          <span className="font-orbitron font-bold text-2xl tracking-tighter text-white ml-2">
+            TTSPL
+          </span>
         </div>
-        <div className="hidden md:flex gap-8 font-orbitron text-[0.7rem] tracking-widest text-[#e0e0ff]/60 uppercase">
-          {["Home", "Services", "Features", "Portfolio", "About", "Team"].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-[#00f2ff] transition-colors cursor-pointer">{item}</a>
-          ))}
+        {/* Desktop Menu + Get Started */}
+        <div className="hidden lg:flex items-center gap-8 font-orbitron text-[0.7rem] tracking-widest text-[#e0e0ff]/60 uppercase">
+          {["Home", "Solutions", "Services", "Clients", "About", "Contact"].map(
+            (item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase().replace(" ", "-")}`}
+                className="hover:text-[#00f2ff] transition-colors cursor-pointer"
+              >
+                {item}
+              </a>
+            ),
+          )}
+          <a
+            href="#contact"
+            className="ml-4 px-6 py-2 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.6rem] uppercase tracking-widest hover:bg-[#00f2ff] hover:text-black hover:border-[#00f2ff] transition-all duration-300 shadow-lg shadow-[#00f2ff]/5"
+          >
+            Get Started
+          </a>
         </div>
-        <button className="px-6 py-2 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.6rem] uppercase tracking-widest hover:bg-[#00f2ff] hover:text-black hover:border-[#00f2ff] transition-all duration-300 shadow-lg shadow-[#00f2ff]/5">
-          Login / Secure
-        </button>
+        {/* Mobile/Tablet Layout: Get Started next to menu button */}
+        <div className="lg:hidden flex flex-1 items-center justify-end w-full gap-2">
+          <button
+            type="button"
+            className="text-[#00f2ff] focus:outline-none"
+            onClick={() => {
+              const menu = document.getElementById("mobile-nav-menu");
+              if (menu) menu.classList.toggle("hidden");
+            }}
+            aria-label="Open menu"
+          >
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+              <path
+                stroke="#00f2ff"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+          <a
+            href="#contact"
+            className="px-6 py-2 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.6rem] uppercase tracking-widest hover:bg-[#00f2ff] hover:text-black hover:border-[#00f2ff] transition-all duration-300 shadow-lg shadow-[#00f2ff]/5"
+          >
+            Get Started
+          </a>
+        </div>
+        {/* Mobile/Tablet Menu Dropdown */}
+        <div
+          id="mobile-nav-menu"
+          className="absolute top-full left-0 w-full bg-[#020205] border-t border-[#00f2ff]/10 py-4 px-8 flex-col gap-4 font-orbitron text-xs text-[#e0e0ff]/80 uppercase tracking-widest shadow-lg hidden lg:hidden z-[101]"
+        >
+          {["Home", "Solutions", "Services", "Clients", "About", "Contact"].map(
+            (item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase().replace(" ", "-")}`}
+                className="hover:text-[#00f2ff] transition-colors cursor-pointer"
+                onClick={() => {
+                  const menu = document.getElementById("mobile-nav-menu");
+                  if (menu) menu.classList.add("hidden");
+                }}
+              >
+                {item}
+              </a>
+            ),
+          )}
+        </div>
       </nav>
 
-      <div className="relative z-20">
+      <div className="relative z-20 mt-24 md:mt-28">
         {/* HOME / HERO */}
-        <Section id="home">
-          <GlassCard 
-            tag="SYSTEM STATUS: OPTIMIZED"
-            title="Next-Gen"
-            subtitle="Quantum Defense"
+        <Section id="home" className="py-4 sm:py-6 md:py-10 lg:py-14">
+          <GlassCard
+            tag="ISO 9001:2008 CERTIFIED"
+            title="Innovative IT Solutions"
+            subtitle="for Data Processing, Examination Automation & Custom Software"
           >
-            <p>We provide autonomous cybersecurity solutions that evolve in real-time. Our neural-link AI detects threats before they materialize, ensuring total digital dominance.</p>
-            <div className="pt-4 flex gap-4">
-              <button className="px-8 py-3 bg-[#00f2ff] text-black font-orbitron text-xs uppercase tracking-widest hover:brightness-110 transition-all">Get Started</button>
-              <button className="px-8 py-3 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-xs uppercase tracking-widest hover:bg-[#00f2ff]/10 transition-all">Documentation</button>
+            <p className="text-base sm:text-lg md:text-xl mb-4 text-center md:text-left font-orbitron">
+              Technotouch Solutions Pvt. Ltd. helps organizations transform
+              manual processes into accurate, scalable, and secure digital
+              systems using cutting-edge technology.
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center md:items-start">
+              <a
+                href="#contact"
+                className="px-6 sm:px-8 py-3 bg-[#00f2ff] text-black font-orbitron text-xs sm:text-sm uppercase tracking-widest hover:brightness-110 transition-all w-full sm:w-auto text-center"
+              >
+                Book a Free Consultation
+              </a>
+              <a
+                href="#case-studies"
+                className="px-6 sm:px-8 py-3 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-xs sm:text-sm uppercase tracking-widest hover:bg-[#00f2ff]/10 transition-all w-full sm:w-auto text-center"
+              >
+                View Our Portfolio
+              </a>
             </div>
           </GlassCard>
         </Section>
 
-        {/* SERVICES */}
-        <Section id="services" className="justify-end">
-          <GlassCard 
-            align="right"
-            tag="OPERATIONAL PROTOCOLS"
-            title="Precision"
-            subtitle="Services"
-          >
-            <ul className="space-y-6">
-              <li className="flex gap-4">
-                <div className="w-1 h-12 bg-[#00f2ff] shrink-0" />
-                <div>
-                  <h4 className="text-[#00f2ff] font-orbitron text-sm mb-1 uppercase">Quantum Encryption</h4>
-                  <p className="text-sm opacity-60">End-to-end data obfuscation utilizing post-quantum cryptographic standards.</p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <div className="w-1 h-12 bg-[#7000ff] shrink-0" />
-                <div>
-                  <h4 className="text-[#7000ff] font-orbitron text-sm mb-1 uppercase">AI Threat Hunting</h4>
-                  <p className="text-sm opacity-60">Continuous monitoring of network patterns to isolate zero-day vulnerabilities.</p>
-                </div>
-              </li>
-            </ul>
-          </GlassCard>
+        {/* Spacer between Hero and Core Solutions */}
+        <div className="my-4 md:my-8 lg:my-12"></div>
+
+        {/* CORE SOLUTIONS */}
+        <Section id="solutions">
+          <div className="max-w-6xl mx-auto w-full">
+            <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-8 uppercase tracking-widest">
+              Our Core Solutions
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg hover:border-[#00f2ff]/50 transition-all group"
+              >
+                <FaSearch className="text-[#00f2ff] mb-4" size={36} />
+                <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
+                  Data Capture & Processing Systems
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+                  Automated OMR, ICR, OCR and intelligent data workflows for
+                  high-volume, high-accuracy data processing.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg hover:border-[#00f2ff]/50 transition-all group"
+              >
+                <FaCode className="text-[#00f2ff] mb-4" size={36} />
+                <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
+                  Custom Software Development
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+                  End-to-end development of web and enterprise applications
+                  tailored to your business needs.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg hover:border-[#00f2ff]/50 transition-all group"
+              >
+                <FaClipboardCheck className="text-[#00f2ff] mb-4" size={36} />
+                <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
+                  ICR/OMR Examination Platforms
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+                  Complete examination processing solutions from form design to
+                  result generation.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg hover:border-[#00f2ff]/50 transition-all group"
+              >
+                <FaHeadset className="text-[#00f2ff] mb-4" size={36} />
+                <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
+                  Technical Support & Managed Services
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+                  24/7 hardware, network, and software support for uninterrupted
+                  business operations.
+                </p>
+              </motion.div>
+            </div>
+          </div>
         </Section>
 
-        {/* FEATURES */}
-        <Section id="features">
-          <GlassCard 
-            tag="CORE CAPABILITIES"
-            title="Core"
-            subtitle="Features"
-          >
-            <div className="grid grid-cols-2 gap-6 pt-2">
-              <div className="p-4 border border-[#00f2ff]/10 bg-white/5">
-                <h5 className="font-orbitron text-[0.6rem] text-[#00f2ff] mb-2 uppercase">Zero-Trust</h5>
-                <p className="text-[0.75rem] opacity-50 font-inter">Verified identity for every packet.</p>
+        {/* WHY CHOOSE TECHNOTOUCH */}
+        <Section id="why-choose">
+          <div className="max-w-6xl mx-auto w-full">
+            <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-8 uppercase tracking-widest">
+              Why Organizations Trust Technotouch
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  text: "Established in 2014 with over 10+ years of industry experience",
+                },
+                {
+                  text: "ISO 9001:2008 certified processes and quality standards",
+                },
+                {
+                  text: "Proven expertise in education, universities, government and enterprises",
+                },
+                {
+                  text: "In-house teams for software, data processing and technical support",
+                },
+                { text: "Infrastructure to process 1 lakh+ forms per day" },
+                { text: "Complete end-to-end project execution capabilities" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: false }}
+                  className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 flex items-start gap-4 hover:border-[#00f2ff]/40 transition-colors"
+                >
+                  <div className="text-[#00f2ff] text-xl mt-1">✓</div>
+                  <p className="text-[#e0e0ff]/90 text-sm leading-relaxed font-orbitron">
+                    {item.text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* KEY IMPACT */}
+        <Section id="impact">
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { value: "10+", label: "Years Experience" },
+                { value: "500+", label: "Projects Completed" },
+                { value: "50+", label: "Happy Clients" },
+                { value: "24/7", label: "Support Available" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: false }}
+                  className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 flex flex-col items-center justify-center shadow-lg hover:border-[#00f2ff]/50 transition-all"
+                >
+                  <div className="font-orbitron text-4xl md:text-5xl text-[#00f2ff] mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-[#e0e0ff]/70 uppercase tracking-widest text-center">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* TRUSTED BY */}
+        <Section id="clients">
+          <div className="max-w-6xl mx-auto w-full">
+            <motion.h3
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-2 uppercase tracking-widest text-center"
+            >
+              Trusted by Leading Institutions
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-[#e0e0ff]/70 mb-12 text-lg font-orbitron text-center"
+            >
+              Organizations across education, government, and enterprise sectors
+              rely on our solutions
+            </motion.p>
+
+            {/* Floating Carousel with Controls */}
+            <div className="relative overflow-hidden py-8">
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => {
+                  const carousel = document.getElementById("client-carousel");
+                  if (carousel) {
+                    carousel.style.animationPlayState = "paused";
+                    carousel.scrollBy({ left: -300, behavior: "smooth" });
+                    setTimeout(() => {
+                      carousel.style.animationPlayState = "running";
+                    }, 1000);
+                  }
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-[#00f2ff]/20 border border-[#00f2ff]/50 rounded-full flex items-center justify-center hover:bg-[#00f2ff]/30 transition-all duration-300 group"
+              >
+                <svg
+                  className="w-6 h-6 text-[#00f2ff] group-hover:text-white transition-colors"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <button
+                onClick={() => {
+                  const carousel = document.getElementById("client-carousel");
+                  if (carousel) {
+                    carousel.style.animationPlayState = "paused";
+                    carousel.scrollBy({ left: 300, behavior: "smooth" });
+                    setTimeout(() => {
+                      carousel.style.animationPlayState = "running";
+                    }, 1000);
+                  }
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-[#00f2ff]/20 border border-[#00f2ff]/50 rounded-full flex items-center justify-center hover:bg-[#00f2ff]/30 transition-all duration-300 group"
+              >
+                <svg
+                  className="w-6 h-6 text-[#00f2ff] group-hover:text-white transition-colors"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+
+              <motion.div
+                id="client-carousel"
+                animate={{ x: ["-50%", "0%"] }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="flex items-center gap-8 whitespace-nowrap overflow-x-auto"
+                style={{
+                  width: "200%",
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                }}
+              >
+                {[
+                  // Clients with logos
+                  {
+                    src: "/clientLogo/mmmut_logo.webp",
+                    name: "Mahamaya Technical University",
+                    location: "Noida, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/deen_dayal_gorakhpur.webp",
+                    name: "Deen Dayal Upadhyaya Gorakhpur University",
+                    location: "Gorakhpur, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/mg_gorakhnath_ayush.webp",
+                    name: "Mahayogi Guru Gorakhnath Ayush University",
+                    location: "Gorakhpur, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/niftem_kundli.webp",
+                    name: "NIFTEM",
+                    location: "New Delhi",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/hnbumu_logo.webp",
+                    name: "HNB Uttarakhand Medical University",
+                    location: "Dehradun, Uttarakhand",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/himalayan_university_logo.webp",
+                    name: "Himalayan University",
+                    location: "Uttarakhand",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/uttarakhand_ayurved_university.webp",
+                    name: "Uttarakhand Ayurved University",
+                    location: "Dehradun, Uttarakhand",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/up_govt_logo.webp",
+                    name: "UP Government",
+                    location: "Uttar Pradesh",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/rmpsu_logo.webp",
+                    name: "RMPSU",
+                    location: "Uttar Pradesh",
+                    hasLogo: true,
+                  },
+                  // Clients without logos (name only)
+                  {
+                    src: "/clientLogo/mgkvp_logo.webp",
+                    name: "Mahatma Gandhi Kashi Vidyapith",
+                    location: "Varanasi, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/aktu_logo.webp",
+                    name: "Dr. APJ Abdul Kalam Technical University",
+                    location: "Lucknow, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/csjmu_kanpur.webp",
+                    name: "Chhatrapati Shahu Ji Maharaj University",
+                    location: "Kanpur, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/Final-Logo-300x300.webp",
+                    name: "Bhimrao Ambedkar University",
+                    location: "Agra, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    name: "Sri Dev Suman Uttarakhand Vishwavidhyalay",
+                    location: "Chamba, Uttarakhand",
+                    hasLogo: false,
+                  },
+                  {
+                    src: "/clientLogo/dr_shakuntala_misra_university.webp",
+                    name: "Dr. Shakuntala Mishra National Rehabilitation University",
+                    location: "Lucknow, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/nehru_group_logo.webp",
+                    name: "Kamla Nehru Institute of Technology (KNIT)",
+                    location: "Sultanpur, UP",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/orange_logo.webp",
+                    name: "Tilka Majhi Bhagalpur University",
+                    location: "Bhagalpur, Bihar",
+                    hasLogo: true,
+                  },
+                  {
+                    src: "/clientLogo/ram_manohar_lohia_ayush.webp",
+                    name: "Dr. Ram Manohar Lohia Institute of Medical Sciences",
+                    location: "Lucknow, UP",
+                    hasLogo: true,
+                  },
+                ]
+                  .concat([
+                    // Duplicate for seamless loop
+                    {
+                      src: "/clientLogo/mmmut_logo.webp",
+                      name: "Mahamaya Technical University",
+                      location: "Noida, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/deen_dayal_gorakhpur.webp",
+                      name: "Deen Dayal Upadhyaya Gorakhpur University",
+                      location: "Gorakhpur, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/mg_gorakhnath_ayush.webp",
+                      name: "Mahayogi Guru Gorakhnath Ayush University",
+                      location: "Gorakhpur, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/niftem_kundli.webp",
+                      name: "NIFTEM",
+                      location: "New Delhi",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/hnbumu_logo.webp",
+                      name: "HNB Uttarakhand Medical University",
+                      location: "Dehradun, Uttarakhand",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/himalayan_university_logo.webp",
+                      name: "Himalayan University",
+                      location: "Uttarakhand",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/uttarakhand_ayurved_university.webp",
+                      name: "Uttarakhand Ayurved University",
+                      location: "Dehradun, Uttarakhand",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/up_govt_logo.webp",
+                      name: "UP Government",
+                      location: "Uttar Pradesh",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/rmpsu_logo.webp",
+                      name: "RMPSU",
+                      location: "Uttar Pradesh",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/mgkashi_vidyapith.webp",
+                      name: "Mahatma Gandhi Kashi Vidyapith",
+                      location: "Varanasi, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/aktu_logo.webp",
+                      name: "Dr. APJ Abdul Kalam Technical University",
+                      location: "Lucknow, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/csjmu_kanpur.webp",
+                      name: "Chhatrapati Shahu Ji Maharaj University",
+                      location: "Kanpur, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/Final-Logo-300x300.webp",
+                      name: "Bhimrao Ambedkar University",
+                      location: "Agra, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      name: "Sri Dev Suman Uttarakhand Vishwavidhyalay",
+                      location: "Chamba, Uttarakhand",
+                      hasLogo: false,
+                    },
+                    {
+                      src: "/clientLogo/dr_shakuntala_misra_university.webp",
+                      name: "Dr. Shakuntala Mishra National Rehabilitation University",
+                      location: "Lucknow, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/nehru_group_logo.webp",
+                      name: "Kamla Nehru Institute of Technology (KNIT)",
+                      location: "Sultanpur, UP",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/orange_logo.webp",
+                      name: "Tilka Majhi Bhagalpur University",
+                      location: "Bhagalpur, Bihar",
+                      hasLogo: true,
+                    },
+                    {
+                      src: "/clientLogo/ram_manohar_lohia_ayush.webp",
+                      name: "Dr. Ram Manohar Lohia Institute of Medical Sciences",
+                      location: "Lucknow, UP",
+                      hasLogo: true,
+                    },
+                  ])
+                  .map((client, i) => (
+                    <motion.div
+                      key={i}
+                      whileHover={{
+                        y: -10,
+                        scale: 1.05,
+                        transition: { duration: 0.3 },
+                      }}
+                      className="bg-[#10131a]/90 border border-[#00f2ff]/30 rounded-xl p-6 shadow-2xl hover:border-[#00f2ff]/70 transition-all duration-500 group backdrop-blur-sm min-w-[280px] flex-shrink-0"
+                    >
+                      {client.hasLogo ? (
+                        /* Logo Card */
+                        <>
+                          <div className="flex justify-center mb-4">
+                            <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2 shadow-lg">
+                              <img
+                                src={client.src}
+                                alt={client.name}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                          </div>
+                          <div className="text-center">
+                            <h4 className="font-orbitron text-white text-sm mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
+                              {client.name}
+                            </h4>
+                            <p className="text-[#e0e0ff]/70 text-xs font-orbitron uppercase">
+                              {client.location}
+                            </p>
+                          </div>
+                        </>
+                      ) : (
+                        /* Name Only Card */
+                        <>
+                          <div className="flex justify-center mb-4">
+                            <div className="w-16 h-16 bg-[#00f2ff]/10 border-2 border-[#00f2ff]/30 rounded-lg flex items-center justify-center">
+                              <div className="text-[#00f2ff] text-2xl font-orbitron font-bold">
+                                {client.name.charAt(0)}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-center">
+                            <h4 className="font-orbitron text-white text-sm mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
+                              {client.name}
+                            </h4>
+                            <p className="text-[#e0e0ff]/70 text-xs font-orbitron uppercase">
+                              {client.location}
+                            </p>
+                          </div>
+                        </>
+                      )}
+                    </motion.div>
+                  ))}
+              </motion.div>
+            </div>
+
+            {/* Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8"
+            >
+              {[
+                { number: "20+", label: "Universities" },
+                { number: "5+", label: "Government Bodies" },
+                { number: "15+", label: "Private Institutions" },
+                { number: "10+", label: "Years Partnership" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="font-orbitron text-2xl md:text-3xl text-[#00f2ff] mb-1">
+                    {stat.number}
+                  </div>
+                  <div className="text-[#e0e0ff]/70 text-xs uppercase tracking-wider font-orbitron">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </Section>
+
+        {/* FINAL CTA */}
+        <Section id="cta">
+          <div className="max-w-4xl mx-auto w-full text-center">
+            <h3 className="font-orbitron text-3xl md:text-5xl text-white mb-4 uppercase tracking-tight">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-[#e0e0ff]/80 text-lg mb-8 font-orbitron">
+              Let's discuss how Technotouch can help you automate, scale, and
+              optimize your operations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#contact"
+                className="px-10 py-4 bg-[#00f2ff] text-black font-orbitron text-sm uppercase tracking-widest hover:brightness-110 transition-all shadow-lg shadow-[#00f2ff]/20"
+              >
+                Start a Project
+              </a>
+              <a
+                href="#case-studies"
+                className="px-10 py-4 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-sm uppercase tracking-widest hover:bg-[#00f2ff]/10 transition-all"
+              >
+                View Our Portfolio
+              </a>
+            </div>
+          </div>
+        </Section>
+
+        {/* SERVICES DETAILED */}
+        <Section id="services">
+          <div className="max-w-6xl mx-auto w-full">
+            <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-2 uppercase tracking-widest">
+              Our Services
+            </h3>
+            <p className="text-[#e0e0ff]/70 mb-8 text-lg font-orbitron">
+              Complete solutions tailored to your business needs
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {/* Service 1: Data Capture */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+              >
+                <FaSearch className="text-[#00f2ff] mb-4" size={32} />
+                <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  Data Capture & Automation
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm mb-3">
+                  Replace manual data entry with intelligent workflows.
+                </p>
+                <div className="mb-3">
+                  <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
+                    How It Works
+                  </div>
+                  <p className="text-[#e0e0ff]/70 text-xs mb-2">
+                    Data collection → Cleaning → Transformation → Analysis →
+                    Reporting
+                  </p>
+                </div>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Benefits
+                </h5>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+                  <li>Faster processing with automation</li>
+                  <li>Higher accuracy (99%+)</li>
+                  <li>Secure handling and storage</li>
+                  <li>Real-time dashboards</li>
+                </ul>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Use Cases
+                </h5>
+                <p className="text-[#e0e0ff]/70 text-xs mb-3">
+                  Surveys, examinations, registrations, recruitment forms,
+                  institutional records
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+                >
+                  Request a Demo
+                </a>
+              </motion.div>
+              {/* Service 2: Custom Software */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+              >
+                <FaCode className="text-[#00f2ff] mb-4" size={32} />
+                <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  Custom Software Development
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm mb-3">
+                  Fully customized software solutions covering the entire
+                  lifecycle.
+                </p>
+                <div className="mb-3">
+                  <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
+                    Our Process
+                  </div>
+                  <p className="text-[#e0e0ff]/70 text-xs mb-2">
+                    Requirements Gathering → System Design → Development &
+                    Coding → Testing & Deployment
+                  </p>
+                </div>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Benefits
+                </h5>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+                  <li>Tailored to your business</li>
+                  <li>Scalable architecture</li>
+                  <li>Secure applications</li>
+                  <li>Full documentation</li>
+                </ul>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Tech Stack
+                </h5>
+                <p className="text-[#e0e0ff]/70 text-xs mb-3">
+                  React, Next.js, Angular, Node.js, Python, Java, MongoDB, AWS,
+                  Azure, Docker
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+                >
+                  Start Your Project
+                </a>
+              </motion.div>
+              {/* Service 3: Examination Systems */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+              >
+                <FaClipboardCheck className="text-[#00f2ff] mb-4" size={32} />
+                <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  ICR/OMR Examination Systems
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm mb-3">
+                  Complete end-to-end examination consultancy and processing.
+                </p>
+                <div className="mb-3">
+                  <div className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                    Capacity
+                  </div>
+                  <p className="text-[#e0e0ff]/70 text-xs mb-2">
+                    Process 1 lakh+ forms per day
+                  </p>
+                </div>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Services Include
+                </h5>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+                  <li>OMR/ICR form design</li>
+                  <li>Question paper setting</li>
+                  <li>Printing & scanning</li>
+                  <li>Centre management</li>
+                  <li>Data extraction & evaluation</li>
+                  <li>Merit list generation</li>
+                  <li>Secure printing & delivery</li>
+                </ul>
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+                >
+                  Streamline Your Process
+                </a>
+              </motion.div>
+              {/* Service 4: Image Technology */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+              >
+                <FaSearch className="text-[#00f2ff] mb-4" size={32} />
+                <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  Document Imaging & Image Technology
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm mb-3">
+                  High-speed document scanning, ICR extraction, and digital
+                  archiving solutions.
+                </p>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Benefits
+                </h5>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+                  <li>Reduced physical storage</li>
+                  <li>Faster document retrieval</li>
+                  <li>Secure electronic records</li>
+                  <li>Lower operational cost</li>
+                </ul>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Solutions
+                </h5>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+                  <li>Electronic filing systems</li>
+                  <li>Digital archiving</li>
+                  <li>ICR data extraction</li>
+                  <li>High-speed scanning</li>
+                </ul>
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+                >
+                  Transform Documents
+                </a>
+              </motion.div>
+              {/* Service 5: Technical Support */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+              >
+                <FaHeadset className="text-[#00f2ff] mb-4" size={32} />
+                <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  24/7 Technical Support
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm mb-3">
+                  Comprehensive hardware, network, and software support
+                  services.
+                </p>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Coverage
+                </h5>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+                  <li>Hardware support (servers, PCs, tablets, laptops)</li>
+                  <li>Network equipment support</li>
+                  <li>Software support</li>
+                  <li>Remote & on-site assistance</li>
+                </ul>
+                <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+                  Process
+                </h5>
+                <p className="text-[#e0e0ff]/70 text-xs mb-3">
+                  Issue identification → Root cause analysis → Fix →
+                  Verification
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+                >
+                  Get Expert Support
+                </a>
+              </motion.div>
+              {/* Technologies */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg col-span-1 md:col-span-2 lg:col-span-3"
+              >
+                <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  Technologies
+                </h4>
+                {/* Animated Tech Stack Carousels */}
+                <div className="space-y-6">
+                  {/* Frontend */}
+                  <div>
+                    <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
+                      Frontend
+                    </div>
+                    <div className="overflow-hidden w-full py-2">
+                      <div
+                        className="flex items-center gap-10 animate-scroll-x-frontend"
+                        style={{
+                          animation: "scroll-x-frontend 28s linear infinite",
+                        }}
+                      >
+                        {[
+                          {
+                            name: "React.js",
+                            icon: <FaReact color="#61DBFB" />,
+                          },
+                          {
+                            name: "Next.js",
+                            icon: <SiNextdotjs color="#fff" />,
+                          },
+                          {
+                            name: "Angular",
+                            icon: <FaAngular color="#dd0031" />,
+                          },
+                          {
+                            name: "TypeScript",
+                            icon: <SiTypescript color="#3178c6" />,
+                          },
+                          {
+                            name: "JavaScript",
+                            icon: <SiJavascript color="#f7df1e" />,
+                          },
+                          { name: "HTML5", icon: <FaHtml5 color="#e34c26" /> },
+                          { name: "CSS3", icon: <FaCss3Alt color="#264de4" /> },
+                        ].map((tech, i) => (
+                          <div
+                            key={i}
+                            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-3 flex flex-col items-center justify-center shadow-lg"
+                            style={{ minWidth: "100px", minHeight: "80px" }}
+                          >
+                            <div className="h-10 w-10 mb-2 flex items-center justify-center text-3xl">
+                              {tech.icon}
+                            </div>
+                            <span className="text-xs font-orbitron text-[#e0e0ff]/80 text-center">
+                              {tech.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Backend */}
+                  <div>
+                    <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
+                      Backend
+                    </div>
+                    <div className="overflow-hidden w-full py-2">
+                      <div
+                        className="flex items-center gap-10 animate-scroll-x-backend"
+                        style={{
+                          animation: "scroll-x-backend 32s linear infinite",
+                        }}
+                      >
+                        {[
+                          {
+                            name: "Node.js",
+                            icon: <FaNodeJs color="#3c873a" />,
+                          },
+                          { name: "Express", icon: <SiExpress color="#fff" /> },
+                          {
+                            name: "Python",
+                            icon: <FaPython color="#3776ab" />,
+                          },
+                          { name: "Java", icon: <FaJava color="#f89820" /> },
+                          {
+                            name: ".NET Framework",
+                            icon: <SiDotnet color="#512bd4" />,
+                          },
+                          {
+                            name: "Spring",
+                            icon: <SiSpring color="#6db33f" />,
+                          },
+                          {
+                            name: "Django",
+                            icon: <SiDjango color="#092e20" />,
+                          },
+                          { name: "PHP", icon: <FaPhp color="#777bb4" /> },
+                          {
+                            name: "RESTful APIs",
+                            icon: <FaDatabase color="#00f2ff" />,
+                          },
+                        ].map((tech, i) => (
+                          <div
+                            key={i}
+                            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-3 flex flex-col items-center justify-center shadow-lg"
+                            style={{ minWidth: "100px", minHeight: "80px" }}
+                          >
+                            <div className="h-10 w-10 mb-2 flex items-center justify-center text-3xl">
+                              {tech.icon}
+                            </div>
+                            <span className="text-xs font-orbitron text-[#e0e0ff]/80 text-center">
+                              {tech.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Database & Cloud */}
+                  <div>
+                    <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
+                      Database & Cloud
+                    </div>
+                    <div className="overflow-hidden w-full py-2">
+                      <div
+                        className="flex items-center gap-10 animate-scroll-x-dbcloud"
+                        style={{
+                          animation: "scroll-x-dbcloud 36s linear infinite",
+                        }}
+                      >
+                        {[
+                          {
+                            name: "MongoDB",
+                            icon: <SiMongodb color="#47A248" />,
+                          },
+                          {
+                            name: "Azure",
+                            icon: <FaMicrosoft color="#0089d6" />,
+                          },
+                          { name: "AWS", icon: <FaAws color="#ff9900" /> },
+                          {
+                            name: "Firebase",
+                            icon: <SiFirebase color="#ffcb2b" />,
+                          },
+                          {
+                            name: "Docker",
+                            icon: <FaDocker color="#2496ed" />,
+                          },
+                          {
+                            name: "Kubernetes",
+                            icon: <SiKubernetes color="#326ce5" />,
+                          },
+                          {
+                            name: "MS SQL",
+                            icon: <FaDatabase color="#cc2927" />,
+                          },
+                          { name: "MySQL", icon: <SiMysql color="#00758f" /> },
+                          {
+                            name: "Oracle",
+                            icon: <SiOracle color="#f80000" />,
+                          },
+                        ].map((tech, i) => (
+                          <div
+                            key={i}
+                            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-3 flex flex-col items-center justify-center shadow-lg"
+                            style={{ minWidth: "100px", minHeight: "80px" }}
+                          >
+                            <div className="h-10 w-10 mb-2 flex items-center justify-center text-3xl">
+                              {tech.icon}
+                            </div>
+                            <span className="text-xs font-orbitron text-[#e0e0ff]/80 text-center">
+                              {tech.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </Section>
+
+        {/* CASE STUDIES */}
+        <Section id="case-studies">
+          <div className="max-w-6xl mx-auto w-full">
+            <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-2 uppercase tracking-widest">
+              Case Studies
+            </h3>
+            <p className="text-[#e0e0ff]/70 mb-8 text-lg">
+              Real-world implementations and measurable results
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg"
+              >
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-3 uppercase tracking-wide">
+                  University Examination Automation
+                </h4>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Client
+                  </div>
+                  <p className="text-[#e0e0ff]/90 text-sm">
+                    State University with 50,000+ students
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Problem
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Manual exam processing taking 45+ days with high error rates
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Solution
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Implemented complete OMR/ICR examination system with
+                    automated evaluation
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Technology
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    OMR/ICR processing, custom evaluation software, cloud
+                    storage
+                  </p>
+                </div>
+                <div className="border-t border-[#00f2ff]/20 pt-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+                    Results
+                  </div>
+                  <ul className="text-[#e0e0ff]/90 text-sm space-y-1">
+                    <li>✓ Processing time reduced from 45 days to 7 days</li>
+                    <li>✓ 99.8% accuracy achieved</li>
+                    <li>✓ 60% cost reduction in evaluation</li>
+                    <li>✓ Real-time result tracking enabled</li>
+                  </ul>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg"
+              >
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-3 uppercase tracking-wide">
+                  Custom ERP System
+                </h4>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Client
+                  </div>
+                  <p className="text-[#e0e0ff]/90 text-sm">
+                    Educational Institute with multiple campuses
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Problem
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Fragmented systems across departments, data inconsistency
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Solution
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Developed unified college management system integrating
+                    admissions, academics, finance, and HR
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Technology
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    React, Node.js, MongoDB, AWS
+                  </p>
+                </div>
+                <div className="border-t border-[#00f2ff]/20 pt-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+                    Results
+                  </div>
+                  <ul className="text-[#e0e0ff]/90 text-sm space-y-1">
+                    <li>✓ All departments unified on single platform</li>
+                    <li>✓ 75% reduction in administrative time</li>
+                    <li>✓ Real-time data access across campuses</li>
+                    <li>✓ Improved decision-making capabilities</li>
+                  </ul>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg"
+              >
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-3 uppercase tracking-wide">
+                  Document Digitization Project
+                </h4>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Client
+                  </div>
+                  <p className="text-[#e0e0ff]/90 text-sm">Government Agency</p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Problem
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    10+ years of paper records consuming massive storage space
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Solution
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    High-speed scanning, ICR extraction, and digital archiving
+                    with searchable database
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Technology
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Industrial scanners, ICR/OCR software, cloud storage
+                  </p>
+                </div>
+                <div className="border-t border-[#00f2ff]/20 pt-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+                    Results
+                  </div>
+                  <ul className="text-[#e0e0ff]/90 text-sm space-y-1">
+                    <li>✓ 2 million+ documents digitized</li>
+                    <li>✓ 90% reduction in physical storage</li>
+                    <li>✓ Document retrieval time: 5 minutes vs 2 hours</li>
+                    <li>✓ Secure, searchable digital archive created</li>
+                  </ul>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg"
+              >
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-3 uppercase tracking-wide">
+                  24/7 IT Infrastructure Support
+                </h4>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Client
+                  </div>
+                  <p className="text-[#e0e0ff]/90 text-sm">
+                    Large Corporate with 500+ employees
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Problem
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Frequent downtime affecting business operations
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Solution
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Dedicated 24/7 technical support team with proactive
+                    monitoring
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                    Technology
+                  </div>
+                  <p className="text-[#e0e0ff]/80 text-sm">
+                    Remote monitoring tools, ticketing system, on-site support
+                  </p>
+                </div>
+                <div className="border-t border-[#00f2ff]/20 pt-4">
+                  <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+                    Results
+                  </div>
+                  <ul className="text-[#e0e0ff]/90 text-sm space-y-1">
+                    <li>✓ 95% reduction in system downtime</li>
+                    <li>✓ Average response time: under 15 minutes</li>
+                    <li>✓ Proactive issue detection preventing failures</li>
+                    <li>✓ Improved employee productivity</li>
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ABOUT US */}
+        <Section id="about" className="pt-20 md:pt-32">
+          <div className="max-w-6xl mx-auto w-full">
+            <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-2 uppercase tracking-widest">
+              About Technotouch Solutions
+            </h3>
+            <p className="text-[#e0e0ff]/70 mb-8 text-lg">
+              ISO 9001:2008 Certified IT Solutions Company
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg"
+              >
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  Who We Are
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed mb-4">
+                  Technotouch Solutions Pvt. Ltd. is an ISO 9001:2008 certified
+                  IT solutions company established in 2014, specializing in form
+                  processing and automated data capture.
+                </p>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed mb-4">
+                  We are registered under the Companies Act, 1956, Government of
+                  India as a privately held limited liability firm.
+                </p>
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-4 mt-6 uppercase tracking-wide">
+                  What We Do
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed mb-3">
+                  We deliver complete data management solutions including:
+                </p>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-sm space-y-1">
+                  <li>OMR / ICR / OCR systems</li>
+                  <li>Document imaging and archiving</li>
+                  <li>Examination automation platforms</li>
+                  <li>Custom software development</li>
+                  <li>24/7 technical support services</li>
+                </ul>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg"
+              >
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  Industries Served
+                </h4>
+                <ul className="list-disc list-inside text-[#e0e0ff]/90 text-sm space-y-1 mb-6">
+                  <li>Education & Universities</li>
+                  <li>Government Organizations</li>
+                  <li>Enterprises & Corporations</li>
+                  <li>Recruitment Agencies</li>
+                  <li>Survey & Research Organizations</li>
+                </ul>
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-4 mt-6 uppercase tracking-wide">
+                  Why We Exist
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed">
+                  To eliminate manual work, improve accuracy, and enable
+                  organizations to scale efficiently through intelligent
+                  automation and cutting-edge technology solutions.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: false }}
+                className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg col-span-1 md:col-span-2"
+              >
+                <h4 className="font-orbitron text-xl text-[#00f2ff] mb-4 uppercase tracking-wide">
+                  Our Expertise & Capabilities
+                </h4>
+                <p className="text-[#e0e0ff]/80 text-sm leading-relaxed mb-4">
+                  With over a decade of experience in form processing and
+                  automated data capture, we represent the cutting edge of
+                  document imaging technology. We have in-house facilities to
+                  develop custom applications and provide complete solutions
+                  including software, backlog conversion, hardware integration,
+                  training, and technical support.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                  <div>
+                    <h5 className="font-orbitron text-sm text-[#00f2ff] mb-2 uppercase tracking-wide">
+                      Core Competencies
+                    </h5>
+                    <ul className="list-disc list-inside text-[#e0e0ff]/90 text-sm space-y-1">
+                      <li>Automated OMR/ICR/OCR processing</li>
+                      <li>Custom software development</li>
+                      <li>Examination systems & consultancy</li>
+                      <li>Document imaging & archiving</li>
+                      <li>Security printing & packaging</li>
+                      <li>Technical support & IT services</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-orbitron text-sm text-[#00f2ff] mb-2 uppercase tracking-wide">
+                      Infrastructure
+                    </h5>
+                    <ul className="list-disc list-inside text-[#e0e0ff]/90 text-sm space-y-1">
+                      <li>Process 1 lakh+ forms per day</li>
+                      <li>State-of-the-art scanning equipment</li>
+                      <li>In-house development teams</li>
+                      <li>Secure data processing facilities</li>
+                      <li>24/7 technical support center</li>
+                      <li>Cloud infrastructure capabilities</li>
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </Section>
+
+        {/* CONTACT */}
+        <Section id="contact">
+          <div className="max-w-4xl mx-auto w-full">
+            <div className="text-center mb-12">
+              <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-4 uppercase tracking-widest">
+                Start Your Project
+              </h3>
+              <p className="text-[#e0e0ff]/80 text-lg mb-8">
+                Get in touch with us to discuss your requirements
+              </p>
+            </div>
+            <div className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 md:p-12 shadow-xl">
+              <div className="flex justify-center mb-8">
+                <div className="w-full flex flex-col items-center justify-center text-center">
+                  <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+                    Contact Information
+                  </h4>
+                  <div className="space-y-4 text-[#e0e0ff]/90 text-sm max-w-md w-full">
+                    <div>
+                      <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                        Phone
+                      </div>
+                      <a
+                        href="tel:+918090808050"
+                        className="hover:text-[#00f2ff] transition-colors break-all"
+                      >
+                        +91 8090-808-050
+                      </a>
+                    </div>
+                    <div>
+                      <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                        Email
+                      </div>
+                      <a
+                        href="mailto:contact@technotouch.in"
+                        className="hover:text-[#00f2ff] transition-colors break-all"
+                      >
+                        contact@technotouch.in
+                      </a>
+                    </div>
+                    <div>
+                      <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+                        Office Address
+                      </div>
+                      <p className="leading-relaxed">
+                        Technotouch Solutions Pvt. Ltd.
+                        <br />
+                        Lucknow, Uttar Pradesh, India
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Removed contact form and message section as per requirements */}
               </div>
-              <div className="p-4 border border-[#00f2ff]/10 bg-white/5">
-                <h5 className="font-orbitron text-[0.6rem] text-[#00f2ff] mb-2 uppercase">Self-Healing</h5>
-                <p className="text-[0.75rem] opacity-50 font-inter">Instant reconstruction of environments.</p>
-              </div>
-              <div className="p-4 border border-[#00f2ff]/10 bg-white/5">
-                <h5 className="font-orbitron text-[0.6rem] text-[#00f2ff] mb-2 uppercase">Edge Ops</h5>
-                <p className="text-[0.75rem] opacity-50 font-inter">Distributed defense at global scale.</p>
-              </div>
-              <div className="p-4 border border-[#00f2ff]/10 bg-white/5">
-                <h5 className="font-orbitron text-[0.6rem] text-[#00f2ff] mb-2 uppercase">Neural Link</h5>
-                <p className="text-[0.75rem] opacity-50 font-inter">Cognitive threat response systems.</p>
+
+              <div className="border-t border-[#00f2ff]/20 pt-6">
+                <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide text-center">
+                  Quick Links
+                </h4>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <a
+                    href="https://wa.me/918090808050"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2 bg-[#25D366] text-white font-orbitron text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded"
+                  >
+                    WhatsApp
+                  </a>
+                  <a
+                    href="#solutions"
+                    className="px-6 py-2 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-xs uppercase tracking-widest hover:bg-[#00f2ff]/10 transition-all rounded"
+                  >
+                    Our Solutions
+                  </a>
+                  <a
+                    href="#case-studies"
+                    className="px-6 py-2 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-xs uppercase tracking-widest hover:bg-[#00f2ff]/10 transition-all rounded"
+                  >
+                    Case Studies
+                  </a>
+                </div>
               </div>
             </div>
-          </GlassCard>
+          </div>
         </Section>
 
-        {/* PORTFOLIO */}
-        <Section id="portfolio" className="justify-end">
-          <GlassCard 
-            align="right"
-            tag="DEPLOYED SOLUTIONS"
-            title="Active"
-            subtitle="Portfolio"
-          >
-            <div className="space-y-4">
-              <div className="relative h-32 w-full bg-gradient-to-r from-[#00f2ff]/10 to-transparent border border-[#00f2ff]/20 p-6">
-                <span className="text-[0.6rem] font-orbitron text-[#00f2ff] block mb-2">PROJECT: NEXUS_VAULT</span>
-                <p className="text-xs opacity-60 font-inter">Securing over $50B in digital assets for Tier-1 financial institutions.</p>
+        {/* TEAM / CAREERS - Keeping some existing content */}
+        <Section id="team" className="justify-end pt-20 md:pt-32">
+          <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mb-16 md:mb-20">
+              <div>
+                <h4 className="font-orbitron text-lg md:text-xl text-[#00f2ff] mb-3 md:mb-4 uppercase tracking-widest">
+                  Our Mission
+                </h4>
+                <p className="text-[#e0e0ff]/80 mb-4 text-sm md:text-base leading-relaxed">
+                  To be the best in the field of form processing and automated
+                  data capture solutions — be it paper forms or electronic forms
+                  — and to be the first choice for all form processing
+                  outsourcing. To constantly invest in technology and create
+                  value propositions to a wide spectrum of businesses for their
+                  data capture needs.
+                </p>
               </div>
-              <div className="relative h-32 w-full bg-gradient-to-r from-[#7000ff]/10 to-transparent border border-[#7000ff]/20 p-6">
-                <span className="text-[0.6rem] font-orbitron text-[#7000ff] block mb-2">PROJECT: TITAN_GRID</span>
-                <p className="text-xs opacity-60 font-inter">Global decentralized power grid defense for 12 sovereign nations.</p>
+              <div>
+                <h4 className="font-orbitron text-lg md:text-xl text-[#00f2ff] mb-3 md:mb-4 uppercase tracking-widest">
+                  Join Our Team
+                </h4>
+                <p className="text-[#e0e0ff]/80 mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
+                  We're always looking for talented individuals to join our
+                  growing team. If you're passionate about technology and want
+                  to work on challenging projects, we'd love to hear from you.
+                </p>
+                <a
+                  href="mailto:contact@technotouch.in"
+                  className="inline-block px-6 md:px-8 py-2 md:py-3 bg-[#00f2ff] text-black font-orbitron text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded"
+                >
+                  Apply Now
+                </a>
               </div>
             </div>
-          </GlassCard>
-        </Section>
-
-        {/* ABOUT */}
-        <Section id="about">
-          <GlassCard 
-            tag="MISSION_LOG"
-            title="About"
-            subtitle="The Mission"
-          >
-            <p>AEGIS was founded on the principle that digital safety is a fundamental human right. In an era of quantum computing and weaponized AI, we serve as the ultimate firewall for the modern world.</p>
-            <p className="text-sm border-l-2 border-[#00f2ff] pl-4 italic">"Securing the future, one node at a time."</p>
-          </GlassCard>
-        </Section>
-
-        {/* TEAM */}
-        <Section id="team" className="justify-end">
-          <GlassCard 
-            align="right"
-            tag="THE ARCHITECTS"
-            title="Lead"
-            subtitle="Engineers"
-          >
-            <div className="grid grid-cols-2 gap-8">
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto border border-[#00f2ff] mb-4 rotate-45 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
-                  <div className="w-16 h-16 bg-[#00f2ff]/20" />
-                </div>
-                <h6 className="font-orbitron text-[0.7rem] text-white">X-42</h6>
-                <span className="text-[0.5rem] text-[#00f2ff]">Core Arch</span>
-              </div>
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto border border-[#7000ff] mb-4 rotate-45 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
-                  <div className="w-16 h-16 bg-[#7000ff]/20" />
-                </div>
-                <h6 className="font-orbitron text-[0.7rem] text-white">V-09</h6>
-                <span className="text-[0.5rem] text-[#7000ff]">AI Lead</span>
-              </div>
-            </div>
-          </GlassCard>
+            {/* Our Journey Timeline */}
+            <Journey />
+            {/* Achievements & Stats */}
+            <ISOStats />
+          </div>
         </Section>
       </div>
 
       <footer className="relative z-20 py-20 px-[10%] border-t border-white/5 bg-[#020205]">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="font-orbitron font-bold text-xl tracking-tighter text-white">AEGIS.SYS</div>
+          <div className="font-orbitron font-bold text-xl tracking-tighter text-white">
+            TECHNOTOUCH SOLUTIONS
+          </div>
           <div className="text-[0.6rem] text-[#e0e0ff]/40 tracking-widest uppercase">
-            &copy; 2026 AEGIS DIGITAL DEFENSE. ALL RIGHTS RESERVED.
+            &copy; 2026 TECHNOTOUCH SOLUTIONS PVT. LTD. ALL RIGHTS RESERVED. ISO
+            9001:2008 CERTIFIED
           </div>
           <div className="flex gap-6 text-[0.6rem] text-[#00f2ff] tracking-[0.3em] font-orbitron">
-            <span className="cursor-pointer hover:text-white transition-colors">TERMINAL</span>
-            <span className="cursor-pointer hover:text-white transition-colors">STATUS</span>
+            <a
+              href="#contact"
+              className="cursor-pointer hover:text-white transition-colors"
+            >
+              CONTACT
+            </a>
+            <a
+              href="#about"
+              className="cursor-pointer hover:text-white transition-colors"
+            >
+              ABOUT
+            </a>
           </div>
         </div>
       </footer>

@@ -1,3 +1,5 @@
+@import "@fontsource/orbitron";
+@import "@fontsource/inter";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,5 +13,51 @@
   body {
     margin: 0;
     padding: 0;
+    font-family: 'Inter', sans-serif;
   }
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+ 
+@keyframes scroll-x-frontend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x-backend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
+@keyframes scroll-x-frontend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x-backend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x-dbcloud {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll-x-frontend {
+  animation: scroll-x-frontend 28s linear infinite;
+}
+.animate-scroll-x-backend {
+  animation: scroll-x-backend 32s linear infinite;
+}
+.animate-scroll-x-dbcloud {
+  animation: scroll-x-dbcloud 36s linear infinite;
+}
+/* Hide scrollbar for webkit browsers */
+#client-carousel::-webkit-scrollbar {
+  display: none;
 }
