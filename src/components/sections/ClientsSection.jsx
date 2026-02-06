@@ -95,7 +95,7 @@ export default function ClientsSection() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className={`flex items-center gap-3 sm:gap-6 md:gap-8 whitespace-nowrap overflow-x-auto touch-pan-x ${styles["hide-scrollbar"]}`}
+            className={`flex items-stretch gap-4 sm:gap-6 md:gap-8 overflow-x-auto touch-pan-x ${styles["hide-scrollbar"]}`}
             style={{
               width: "200%",
             }}
@@ -129,7 +129,7 @@ export default function ClientsSection() {
               {
                 src: "/clientLogo/hnbumu_logo.webp",
                 name: "HNB Uttarakhand Medical University",
-                location: "Dehradun, Uttarakhand",
+                location: "Uttarakhand",
                 hasLogo: true,
               },
               {
@@ -141,7 +141,7 @@ export default function ClientsSection() {
               {
                 src: "/clientLogo/uttarakhand_ayurved_university.webp",
                 name: "Uttarakhand Ayurved University",
-                location: "Dehradun, Uttarakhand",
+                location: "Uttarakhand",
                 hasLogo: true,
               },
               {
@@ -329,13 +329,13 @@ export default function ClientsSection() {
                     scale: 1.05,
                     transition: { duration: 0.3 },
                   }}
-                  className="bg-[#10131a]/90 border border-[#00f2ff]/30 rounded-xl p-2 sm:p-3 md:p-5 shadow-2xl hover:border-[#00f2ff]/70 transition-all duration-500 group backdrop-blur-sm min-w-[120px] sm:min-w-[160px] md:min-w-[200px] max-w-[80vw] flex-shrink-0 overflow-hidden"
+                  className="bg-[#0a0d14]/95 border-2 border-[#00f2ff]/40 rounded-2xl p-4 sm:p-5 md:p-6 shadow-2xl hover:border-[#00f2ff]/80 hover:shadow-[#00f2ff]/20 transition-all duration-500 group backdrop-blur-sm flex-shrink-0 overflow-hidden flex flex-col items-center justify-between min-w-[140px] sm:min-w-[180px] md:min-w-[220px] w-[140px] sm:w-[180px] md:w-[220px] h-[200px] sm:h-[260px] md:h-[300px]"
                 >
                   {client.hasLogo ? (
                     /* Logo Card */
                     <>
-                      <div className="flex justify-center mb-2 sm:mb-3">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-white rounded-lg flex items-center justify-center p-1 md:p-2 shadow-lg">
+                      <div className="flex justify-center items-center flex-1 w-full mb-3 sm:mb-4">
+                        <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 bg-white rounded-xl flex items-center justify-center p-3 sm:p-4 md:p-5 shadow-xl">
                           <img
                             src={client.src}
                             alt={client.name}
@@ -343,11 +343,11 @@ export default function ClientsSection() {
                           />
                         </div>
                       </div>
-                      <div className="text-center">
-                        <h4 className="font-orbitron text-white text-[0.7rem] sm:text-xs md:text-sm mb-0.5 sm:mb-1 md:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
+                      <div className="text-center w-full px-1">
+                        <h4 className="font-orbitron text-white text-[0.65rem] sm:text-xs md:text-sm mb-1 sm:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase break-words">
                           {client.name}
                         </h4>
-                        <p className="text-[#e0e0ff]/70 text-[0.55rem] sm:text-[0.65rem] md:text-xs font-orbitron uppercase">
+                        <p className="text-[#e0e0ff]/60 text-[0.6rem] sm:text-[0.7rem] md:text-xs font-orbitron uppercase">
                           {client.location}
                         </p>
                       </div>
@@ -355,18 +355,18 @@ export default function ClientsSection() {
                   ) : (
                     /* Name Only Card */
                     <>
-                      <div className="flex justify-center mb-2 sm:mb-3">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-[#00f2ff]/10 border-2 border-[#00f2ff]/30 rounded-lg flex items-center justify-center">
-                          <div className="text-[#00f2ff] text-base sm:text-lg md:text-2xl font-orbitron font-bold">
+                      <div className="flex justify-center items-center flex-1 w-full mb-3 sm:mb-4">
+                        <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 bg-[#00f2ff]/10 border-2 border-[#00f2ff]/40 rounded-xl flex items-center justify-center">
+                          <div className="text-[#00f2ff] text-3xl sm:text-4xl md:text-5xl font-orbitron font-bold">
                             {client.name.charAt(0)}
                           </div>
                         </div>
                       </div>
-                      <div className="text-center">
-                        <h4 className="font-orbitron text-white text-[0.7rem] sm:text-xs md:text-sm mb-0.5 sm:mb-1 md:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase">
+                      <div className="text-center w-full px-1">
+                        <h4 className="font-orbitron text-white text-[0.65rem] sm:text-xs md:text-sm mb-1 sm:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase break-words">
                           {client.name}
                         </h4>
-                        <p className="text-[#e0e0ff]/70 text-[0.55rem] sm:text-[0.65rem] md:text-xs font-orbitron uppercase">
+                        <p className="text-[#e0e0ff]/60 text-[0.6rem] sm:text-[0.7rem] md:text-xs font-orbitron uppercase">
                           {client.location}
                         </p>
                       </div>

@@ -65,7 +65,7 @@ export default function ContactSection() {
                 href="https://wa.me/918090808050"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2 bg-[#25D366] text-white font-orbitron text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded"
+                className="px-6 py-2 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-xs uppercase tracking-widest hover:bg-[#00f2ff]/10 transition-all rounded"
               >
                 WhatsApp
               </a>

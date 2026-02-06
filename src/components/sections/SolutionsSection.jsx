@@ -13,6 +13,23 @@ export default function SolutionsSection() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: false }}
+            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg hover:border-[#00f2ff]/50 transition-all group"
+          >
+            <FaHeadset className="text-[#00f2ff] mb-4" size={36} />
+            <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
+              Complete IT Solution
+            </h4>
+            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+              Comprehensive IT infrastructure services covering campus
+              networking, IP surveillance, system integration, and secure
+              digital environments for organizations of all sizes.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: false }}
             className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-8 shadow-lg hover:border-[#00f2ff]/50 transition-all group"

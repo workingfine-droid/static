@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,6 +21,15 @@ gsap.registerPlugin(ScrollTrigger);
 export default function CyberExperience() {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
+  const [navSolid, setNavSolid] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setNavSolid(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
@@ -208,18 +217,19 @@ export default function CyberExperience() {
         className="fixed top-0 left-0 w-full h-full z-10 pointer-events-none"
       />
 
-      <nav className="fixed top-0 w-full px-8 py-6 flex justify-between items-center z-[100] bg-gradient-to-b from-[#020205] to-transparent">
+      <nav
+        className={`fixed top-0 w-full px-8 py-2 flex justify-between items-center z-[100] transition-all duration-300 
+          bg-gradient-to-b from-[#00f2ff]/15 via-white/15 to-transparent
+          ${navSolid ? "bg-gradient-to-b from-[#00f2ff]/15 via-white/15 to-transparent backdrop-blur-md" : "bg-transparent"}
+        `}
+      >
         <div className="flex items-center gap-2">
-          <div className="bg-white/10 border border-[#00f2ff]/40 rounded-lg p-1 flex items-center shadow-md">
-            <img
-              src="/companylogo/ttspl.png"
-              alt="TTSPL Logo"
-              className="w-10 h-10 object-contain"
-            />
-          </div>
-          <span className="font-orbitron font-bold text-2xl tracking-tighter text-white ml-2">
-            TTSPL
-          </span>
+          <img
+            src="/companylogo/ttspl.png"
+            alt="TTSPL Logo"
+            className="w-20 h-20 object-contain"
+          />
+          TTSPL
         </div>
         {/* Desktop Menu + Get Started */}
         <div className="hidden lg:flex items-center gap-8 font-orbitron text-[0.7rem] tracking-widest text-[#e0e0ff]/60 uppercase">

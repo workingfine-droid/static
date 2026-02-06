@@ -17,6 +17,10 @@ import {
   FaCode,
   FaClipboardCheck,
   FaHeadset,
+  FaImage,
+  FaUniversity,
+  FaTools,
+  FaNetworkWired,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -44,54 +48,7 @@ export default function ServicesSection() {
           Complete solutions tailored to your business needs
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {/* Service 1: Data Capture */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: false }}
-            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
-          >
-            <FaSearch className="text-[#00f2ff] mb-4" size={32} />
-            <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
-              Data Capture & Automation
-            </h4>
-            <p className="text-[#e0e0ff]/80 text-sm mb-3">
-              Replace manual data entry with intelligent workflows.
-            </p>
-            <div className="mb-3">
-              <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
-                How It Works
-              </div>
-              <p className="text-[#e0e0ff]/70 text-xs mb-2">
-                Data collection → Cleaning → Transformation → Analysis →
-                Reporting
-              </p>
-            </div>
-            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
-              Benefits
-            </h5>
-            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
-              <li>Faster processing with automation</li>
-              <li>Higher accuracy (99%+)</li>
-              <li>Secure handling and storage</li>
-              <li>Real-time dashboards</li>
-            </ul>
-            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
-              Use Cases
-            </h5>
-            <p className="text-[#e0e0ff]/70 text-xs mb-3">
-              Surveys, examinations, registrations, recruitment forms,
-              institutional records
-            </p>
-            <a
-              href="#contact"
-              className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
-            >
-              Request a Demo
-            </a>
-          </motion.div>
-          {/* Service 2: Custom Software */}
+          {/* Service 1: Custom Software */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +56,7 @@ export default function ServicesSection() {
             viewport={{ once: false }}
             className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
           >
-            <FaCode className="text-[#00f2ff] mb-4" size={32} />
+            <SiJavascript className="text-[#00f2ff] mb-4" size={32} />
             <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
               Custom Software Development
             </h4>
@@ -138,7 +95,143 @@ export default function ServicesSection() {
               Start Your Project
             </a>
           </motion.div>
-          {/* Service 3: Examination Systems */}
+          {/* Service 2: Image Technology */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: false }}
+            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+          >
+            <FaImage className="text-[#00f2ff] mb-4" size={32} />
+            <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+              Document Imaging & Image Technology
+            </h4>
+            <p className="text-[#e0e0ff]/80 text-sm mb-3">
+              High-speed document scanning, ICR extraction, and digital
+              archiving solutions.
+            </p>
+            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+              Benefits
+            </h5>
+            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+              <li>Reduced physical storage</li>
+              <li>Faster document retrieval</li>
+              <li>Secure electronic records</li>
+              <li>Lower operational cost</li>
+            </ul>
+            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+              Solutions
+            </h5>
+            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+              <li>Electronic filing systems</li>
+              <li>Digital archiving</li>
+              <li>ICR data extraction</li>
+              <li>High-speed scanning</li>
+            </ul>
+            <a
+              href="#contact"
+              className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+            >
+              Transform Documents
+            </a>
+          </motion.div>
+          {/* Service 3: End to End Examination */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: false }}
+            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+          >
+            <FaUniversity className="text-[#00f2ff] mb-4" size={32} />
+
+            <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+              Examination & Result Automation
+            </h4>
+
+            <p className="text-[#e0e0ff]/80 text-sm mb-3">
+              End-to-end university examination automation platform covering
+              exam forms, payments, admit cards, digital evaluation, and result
+              processing.
+            </p>
+
+            <div className="mb-3">
+              <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
+                Workflow
+              </div>
+              <p className="text-[#e0e0ff]/70 text-xs mb-2">
+                Registration → Exam Forms → Payments → Admit Cards → Marks Entry
+                → Evaluation → Results
+              </p>
+            </div>
+
+            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+              Key Features
+            </h5>
+            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+              <li>Automated exam form & fee management</li>
+              <li>Digital evaluation system</li>
+              <li>Marks entry with validation</li>
+              <li>Result processing & one-view portal</li>
+              <li>Reporting dashboard</li>
+            </ul>
+
+            <a
+              href="#contact"
+              className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+            >
+              Request Demo
+            </a>
+          </motion.div>
+          {/* Service 4: Data Capture */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: false }}
+            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
+          >
+            <FaDatabase className="text-[#00f2ff] mb-4" size={32} />
+            <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+              Data Capture & Automation
+            </h4>
+            <p className="text-[#e0e0ff]/80 text-sm mb-3">
+              Replace manual data entry with intelligent workflows.
+            </p>
+            <div className="mb-3">
+              <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
+                How It Works
+              </div>
+              <p className="text-[#e0e0ff]/70 text-xs mb-2">
+                Data collection → Cleaning → Transformation → Analysis →
+                Reporting
+              </p>
+            </div>
+            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+              Benefits
+            </h5>
+            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+              <li>Faster processing with automation</li>
+              <li>Higher accuracy (99%+)</li>
+              <li>Secure handling and storage</li>
+              <li>Real-time dashboards</li>
+            </ul>
+            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
+              Use Cases
+            </h5>
+            <p className="text-[#e0e0ff]/70 text-xs mb-3">
+              Surveys, examinations, registrations, recruitment forms,
+              institutional records
+            </p>
+            <a
+              href="#contact"
+              className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
+            >
+              Request a Demo
+            </a>
+          </motion.div>
+          {/* Service 5: Examination Systems */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -146,7 +239,7 @@ export default function ServicesSection() {
             viewport={{ once: false }}
             className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
           >
-            <FaClipboardCheck className="text-[#00f2ff] mb-4" size={32} />
+            <SiSpring className="text-[#00f2ff] mb-4" size={32} />
             <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
               ICR/OMR Examination Systems
             </h4>
@@ -180,48 +273,7 @@ export default function ServicesSection() {
               Streamline Your Process
             </a>
           </motion.div>
-          {/* Service 4: Image Technology */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: false }}
-            className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
-          >
-            <FaSearch className="text-[#00f2ff] mb-4" size={32} />
-            <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
-              Document Imaging & Image Technology
-            </h4>
-            <p className="text-[#e0e0ff]/80 text-sm mb-3">
-              High-speed document scanning, ICR extraction, and digital
-              archiving solutions.
-            </p>
-            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
-              Benefits
-            </h5>
-            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
-              <li>Reduced physical storage</li>
-              <li>Faster document retrieval</li>
-              <li>Secure electronic records</li>
-              <li>Lower operational cost</li>
-            </ul>
-            <h5 className="font-orbitron text-xs text-[#00f2ff] mb-1 uppercase">
-              Solutions
-            </h5>
-            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
-              <li>Electronic filing systems</li>
-              <li>Digital archiving</li>
-              <li>ICR data extraction</li>
-              <li>High-speed scanning</li>
-            </ul>
-            <a
-              href="#contact"
-              className="inline-block px-6 py-2 bg-[#00f2ff]/10 border border-[#00f2ff]/30 text-[#00f2ff] font-orbitron text-[0.65rem] uppercase tracking-widest hover:bg-[#00f2ff]/20 transition-all mt-2"
-            >
-              Transform Documents
-            </a>
-          </motion.div>
-          {/* Service 5: Technical Support */}
+          {/* Service 6: Technical Support */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -229,7 +281,7 @@ export default function ServicesSection() {
             viewport={{ once: false }}
             className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all"
           >
-            <FaHeadset className="text-[#00f2ff] mb-4" size={32} />
+            <FaTools className="text-[#00f2ff] mb-4" size={32} />
             <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
               24/7 Technical Support
             </h4>
@@ -258,6 +310,28 @@ export default function ServicesSection() {
               Get Expert Support
             </a>
           </motion.div>
+          <motion.div className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-6 shadow-lg hover:border-[#00f2ff]/50 transition-all">
+            <FaNetworkWired className="text-[#00f2ff] mb-4" size={32} />
+
+            <h4 className="font-orbitron text-lg text-[#00f2ff] mb-4 uppercase tracking-wide">
+              Smart Campus & Infrastructure Solutions
+            </h4>
+
+            <p className="text-[#e0e0ff]/80 text-sm mb-3">
+              End-to-end infrastructure implementation for educational
+              institutions and organizations.
+            </p>
+
+            <ul className="list-disc list-inside text-[#e0e0ff]/90 text-xs mb-3">
+              <li>CCTV smart surveillance systems</li>
+              <li>Campus Wi-Fi network design</li>
+              <li>IP-PBX communication systems</li>
+              <li>Public Address (PA) systems</li>
+              <li>Smart classroom setup</li>
+              <li>Biometric attendance integration</li>
+            </ul>
+          </motion.div>
+
           {/* Technologies */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

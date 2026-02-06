@@ -37,7 +37,7 @@ export default function TeamSection() {
           </div>
         </div>
         {/* Our Journey Timeline */}
-        <Journey />
+        {/* <Journey /> */}
         {/* Achievements & Stats */}
         <ISOStats />
       </div>
