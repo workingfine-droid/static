@@ -77,7 +77,7 @@ export default function CyberExperience() {
     const coreGroup = new THREE.Group();
 
     // Outer Shell - Geometric lines
-    const outerGeo = new THREE.IcosahedronGeometry(2.5, 1);
+    const outerGeo = new THREE.IcosahedronGeometry(2.5, 4);
     const edges = new THREE.EdgesGeometry(outerGeo);
     const lineMat = new THREE.LineBasicMaterial({
       color: 0x00f2ff,
@@ -88,15 +88,19 @@ export default function CyberExperience() {
     const outerShield = new THREE.LineSegments(edges, lineMat);
     coreGroup.add(outerShield);
 
-    // Middle Shell - More detailed
-    const midGeo = new THREE.IcosahedronGeometry(2.2, 2);
+    //comment
+    // 0x7000ff
+    // Middle Shell - More detailed, inside the outer shell
+    const midGeo = new THREE.IcosahedronGeometry(1, 5);
     const midEdges = new THREE.EdgesGeometry(midGeo);
     const midLineMat = new THREE.LineBasicMaterial({
-      color: 0x7000ff,
+      color: 0xc0c0c0, // white
       transparent: true,
-      opacity: 0.2,
+      opacity: 0.4,
+      linewidth: 1,
     });
     const midShield = new THREE.LineSegments(midEdges, midLineMat);
+    midShield.position.set(0, 0, 0); // ensure centered
     coreGroup.add(midShield);
 
     // Inner Glowing Core
@@ -107,7 +111,7 @@ export default function CyberExperience() {
       opacity: 0.05,
     });
     const coreSphere = new THREE.Mesh(innerGeo, innerMat);
-    coreGroup.add(coreSphere);
+    // coreGroup.add(coreSphere);
 
     scene.add(coreGroup);
 
@@ -158,12 +162,13 @@ export default function CyberExperience() {
 
       coreGroup.rotation.y += 0.002;
       coreGroup.rotation.z += 0.001;
+      //comment
       midShield.rotation.y -= 0.004;
       particles.rotation.y += 0.0002;
 
       camera.position.x += (mouse.x * 3 - camera.position.x) * 0.08;
       camera.position.y += (-mouse.y * 3 - camera.position.y) * 0.08;
-      camera.lookAt(0, 0, 0);
+      camera.lookAt(1, 0, 1);
 
       renderer.render(scene, camera);
     };
