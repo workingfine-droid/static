@@ -44,7 +44,7 @@ export default function ServicesSection() {
         <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-2 uppercase tracking-widest">
           Our Services
         </h3>
-        <p className="text-[#e0e0ff]/70 mb-8 text-lg font-orbitron">
+        <p className="text-[#00f2ff] mb-8 text-lg font-orbitron">
           Complete solutions tailored to your business needs
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -350,26 +350,20 @@ export default function ServicesSection() {
                 <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
                   Frontend
                 </div>
-                <div className="overflow-hidden w-full py-2">
+                <div
+                  className="overflow-x-auto hide-scrollbar w-full py-2"
+                  style={{ WebkitOverflowScrolling: "touch" }}
+                >
                   <div
-                    className="flex items-center gap-10 animate-scroll-x-frontend"
+                    className="flex items-center gap-4 sm:gap-8 md:gap-10 animate-scroll-x-frontend"
                     style={{
                       animation: "scroll-x-frontend 28s linear infinite",
                     }}
                   >
                     {[
-                      {
-                        name: "React.js",
-                        icon: <FaReact color="#61DBFB" />,
-                      },
-                      {
-                        name: "Next.js",
-                        icon: <SiNextdotjs color="#fff" />,
-                      },
-                      {
-                        name: "Angular",
-                        icon: <FaAngular color="#dd0031" />,
-                      },
+                      { name: "React.js", icon: <FaReact color="#61DBFB" /> },
+                      { name: "Next.js", icon: <SiNextdotjs color="#fff" /> },
+                      { name: "Angular", icon: <FaAngular color="#dd0031" /> },
                       {
                         name: "TypeScript",
                         icon: <SiTypescript color="#3178c6" />,
@@ -384,7 +378,7 @@ export default function ServicesSection() {
                       <div
                         key={i}
                         className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-3 flex flex-col items-center justify-center shadow-lg"
-                        style={{ minWidth: "100px", minHeight: "80px" }}
+                        style={{ minWidth: "90px", minHeight: "80px" }}
                       >
                         <div className="h-10 w-10 mb-2 flex items-center justify-center text-3xl">
                           {tech.icon}
@@ -402,36 +396,27 @@ export default function ServicesSection() {
                 <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
                   Backend
                 </div>
-                <div className="overflow-hidden w-full py-2">
+                <div
+                  className="overflow-x-auto hide-scrollbar w-full py-2"
+                  style={{ WebkitOverflowScrolling: "touch" }}
+                >
                   <div
-                    className="flex items-center gap-10 animate-scroll-x-backend"
+                    className="flex items-center gap-4 sm:gap-8 md:gap-10 animate-scroll-x-backend"
                     style={{
                       animation: "scroll-x-backend 32s linear infinite",
                     }}
                   >
                     {[
-                      {
-                        name: "Node.js",
-                        icon: <FaNodeJs color="#3c873a" />,
-                      },
+                      { name: "Node.js", icon: <FaNodeJs color="#3c873a" /> },
                       { name: "Express", icon: <SiExpress color="#fff" /> },
-                      {
-                        name: "Python",
-                        icon: <FaPython color="#3776ab" />,
-                      },
+                      { name: "Python", icon: <FaPython color="#3776ab" /> },
                       { name: "Java", icon: <FaJava color="#f89820" /> },
                       {
                         name: ".NET Framework",
                         icon: <SiDotnet color="#512bd4" />,
                       },
-                      {
-                        name: "Spring",
-                        icon: <SiSpring color="#6db33f" />,
-                      },
-                      {
-                        name: "Django",
-                        icon: <SiDjango color="#092e20" />,
-                      },
+                      { name: "Spring", icon: <SiSpring color="#6db33f" /> },
+                      { name: "Django", icon: <SiDjango color="#092e20" /> },
                       { name: "PHP", icon: <FaPhp color="#777bb4" /> },
                       {
                         name: "RESTful APIs",
@@ -441,7 +426,7 @@ export default function ServicesSection() {
                       <div
                         key={i}
                         className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-3 flex flex-col items-center justify-center shadow-lg"
-                        style={{ minWidth: "100px", minHeight: "80px" }}
+                        style={{ minWidth: "90px", minHeight: "80px" }}
                       >
                         <div className="h-10 w-10 mb-2 flex items-center justify-center text-3xl">
                           {tech.icon}
@@ -459,49 +444,37 @@ export default function ServicesSection() {
                 <div className="font-orbitron text-xs text-[#00f2ff] mb-2">
                   Database & Cloud
                 </div>
-                <div className="overflow-hidden w-full py-2">
+                <div
+                  className="overflow-x-auto hide-scrollbar w-full py-2"
+                  style={{ WebkitOverflowScrolling: "touch" }}
+                >
                   <div
-                    className="flex items-center gap-10 animate-scroll-x-dbcloud"
+                    className="flex items-center gap-4 sm:gap-8 md:gap-10 animate-scroll-x-dbcloud"
                     style={{
                       animation: "scroll-x-dbcloud 36s linear infinite",
                     }}
                   >
                     {[
-                      {
-                        name: "MongoDB",
-                        icon: <SiMongodb color="#47A248" />,
-                      },
-                      {
-                        name: "Azure",
-                        icon: <FaMicrosoft color="#0089d6" />,
-                      },
+                      { name: "MongoDB", icon: <SiMongodb color="#47A248" /> },
+                      { name: "Azure", icon: <FaMicrosoft color="#0089d6" /> },
                       { name: "AWS", icon: <FaAws color="#ff9900" /> },
                       {
                         name: "Firebase",
                         icon: <SiFirebase color="#ffcb2b" />,
                       },
-                      {
-                        name: "Docker",
-                        icon: <FaDocker color="#2496ed" />,
-                      },
+                      { name: "Docker", icon: <FaDocker color="#2496ed" /> },
                       {
                         name: "Kubernetes",
                         icon: <SiKubernetes color="#326ce5" />,
                       },
-                      {
-                        name: "MS SQL",
-                        icon: <FaDatabase color="#cc2927" />,
-                      },
+                      { name: "MS SQL", icon: <FaDatabase color="#cc2927" /> },
                       { name: "MySQL", icon: <SiMysql color="#00758f" /> },
-                      {
-                        name: "Oracle",
-                        icon: <SiOracle color="#f80000" />,
-                      },
+                      { name: "Oracle", icon: <SiOracle color="#f80000" /> },
                     ].map((tech, i) => (
                       <div
                         key={i}
                         className="bg-[#10131a]/70 border border-[#00f2ff]/20 rounded-lg p-3 flex flex-col items-center justify-center shadow-lg"
-                        style={{ minWidth: "100px", minHeight: "80px" }}
+                        style={{ minWidth: "90px", minHeight: "80px" }}
                       >
                         <div className="h-10 w-10 mb-2 flex items-center justify-center text-3xl">
                           {tech.icon}

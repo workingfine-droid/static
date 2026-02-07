@@ -5,10 +5,14 @@ export default function HomeSection() {
     <Section id="home" className="py-4 sm:py-6 md:py-10 lg:py-14">
       <GlassCard
         tag="ISO 9001:2008 CERTIFIED"
-        title="Innovative IT Solutions"
-        subtitle="for Data Processing, Examination Automation & Custom Software"
+        title={<span className="font-orbitron">Innovative IT Solutions</span>}
+        subtitle={
+          <span className="font-orbitron">
+            for Data Processing, Examination Automation & Custom Software
+          </span>
+        }
       >
-        <p className="text-base sm:text-lg md:text-xl mb-4 text-center md:text-left font-orbitron">
+        <p className="text-base sm:text-lg md:text-xl mb-4 text-center md:text-left font-century-gothic">
           Technotouch Solutions Pvt. Ltd. helps organizations transform manual
           processes into accurate, scalable, and secure digital systems using
           cutting-edge technology.

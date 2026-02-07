@@ -168,7 +168,7 @@ export default function CyberExperience() {
 
       camera.position.x += (mouse.x * 3 - camera.position.x) * 0.08;
       camera.position.y += (-mouse.y * 3 - camera.position.y) * 0.08;
-      camera.lookAt(1, 0, 1);
+      camera.lookAt(0, 0, 0);
 
       renderer.render(scene, camera);
     };
@@ -232,7 +232,13 @@ export default function CyberExperience() {
           <img
             src="/companylogo/ttspl.png"
             alt="TTSPL Logo"
-            className="w-20 h-20 object-contain"
+            className="w-12 h-12 object-contain relative z-10"
+            style={{
+              filter:
+                "drop-shadow(0 0 4px rgba(255, 255, 255, 0.45)) " +
+                "drop-shadow(0 0 10px rgba(0, 200, 255, 0.55)) " +
+                "drop-shadow(0 0 18px rgba(0, 200, 255, 0.45))",
+            }}
           />
           TTSPL
         </div>

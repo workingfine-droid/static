@@ -8,7 +8,7 @@ export default function CaseStudiesSection() {
         <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-2 uppercase tracking-widest">
           Case Studies
         </h3>
-        <p className="text-[#e0e0ff]/70 mb-8 text-lg">
+        <p className="text-[#00f2ff] mb-8 text-lg">
           Real-world implementations and measurable results
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -23,7 +23,7 @@ export default function CaseStudiesSection() {
               University Examination Automation
             </h4>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Client
               </div>
               <p className="text-[#e0e0ff]/90 text-sm">
@@ -31,7 +31,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Problem
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -39,7 +39,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Solution
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -48,7 +48,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Technology
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -56,7 +56,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="border-t border-[#00f2ff]/20 pt-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2 font-orbitron">
                 Results
               </div>
               <ul className="text-[#e0e0ff]/90 text-sm space-y-1">
@@ -78,7 +78,7 @@ export default function CaseStudiesSection() {
               Custom ERP System
             </h4>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Client
               </div>
               <p className="text-[#e0e0ff]/90 text-sm">
@@ -86,7 +86,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Problem
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -94,7 +94,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Solution
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -103,7 +103,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Technology
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -111,7 +111,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="border-t border-[#00f2ff]/20 pt-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2 font-orbitron">
                 Results
               </div>
               <ul className="text-[#e0e0ff]/90 text-sm space-y-1">
@@ -133,13 +133,13 @@ export default function CaseStudiesSection() {
               Document Digitization Project
             </h4>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Client
               </div>
               <p className="text-[#e0e0ff]/90 text-sm">Government Agency</p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Problem
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -147,7 +147,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Solution
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -156,7 +156,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Technology
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -164,7 +164,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="border-t border-[#00f2ff]/20 pt-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2 font-orbitron">
                 Results
               </div>
               <ul className="text-[#e0e0ff]/90 text-sm space-y-1">
@@ -186,7 +186,7 @@ export default function CaseStudiesSection() {
               24/7 IT Infrastructure Support
             </h4>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Client
               </div>
               <p className="text-[#e0e0ff]/90 text-sm">
@@ -194,7 +194,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Problem
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -202,7 +202,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Solution
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -210,7 +210,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="mb-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-1 font-orbitron">
                 Technology
               </div>
               <p className="text-[#e0e0ff]/80 text-sm">
@@ -218,7 +218,7 @@ export default function CaseStudiesSection() {
               </p>
             </div>
             <div className="border-t border-[#00f2ff]/20 pt-4">
-              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2">
+              <div className="text-xs text-[#00f2ff]/60 uppercase tracking-wider mb-2 font-orbitron">
                 Results
               </div>
               <ul className="text-[#e0e0ff]/90 text-sm space-y-1">

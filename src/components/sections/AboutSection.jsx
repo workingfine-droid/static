@@ -8,7 +8,7 @@ export default function AboutSection() {
         <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-2 uppercase tracking-widest">
           About Technotouch Solutions
         </h3>
-        <p className="text-[#e0e0ff]/70 mb-8 text-lg">
+        <p className="text-[#00f2ff] mb-8 text-lg">
           ISO 9001:2008 Certified IT Solutions Company
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

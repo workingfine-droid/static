@@ -7,7 +7,7 @@ export default function CTASection() {
         <h3 className="font-orbitron text-3xl md:text-5xl text-white mb-4 uppercase tracking-tight">
           Ready to Start Your Project?
         </h3>
-        <p className="text-[#e0e0ff]/80 text-lg mb-8 font-orbitron">
+        <p className="text-white text-lg mb-8 font-orbitron">
           Let's discuss how Technotouch can help you automate, scale, and
           optimize your operations.
         </p>

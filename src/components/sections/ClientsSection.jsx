@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Section } from "../shared/SharedComponents";
-import styles from "./ClientsSection.module.css";
 
 export default function ClientsSection() {
   return (
@@ -18,16 +17,14 @@ export default function ClientsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[#e0e0ff]/70 mb-12 text-lg font-orbitron text-center"
+          className="text-[#00f2ff] mb-12 text-lg font-orbitron text-center"
         >
           Organizations across education, government, and enterprise sectors
           rely on our solutions
         </motion.p>
 
         {/* Floating Carousel with Controls */}
-        <div
-          className={`relative overflow-x-auto py-6 sm:py-8 select-none ${styles["hide-scrollbar"]}`}
-        >
+        <div className="relative overflow-x-auto py-6 sm:py-8 select-none hide-scrollbar">
           {/* Navigation Arrows: Hide on mobile */}
           <button
             onClick={() => {
@@ -95,7 +92,7 @@ export default function ClientsSection() {
               repeat: Infinity,
               ease: "linear",
             }}
-            className={`flex items-stretch gap-4 sm:gap-6 md:gap-8 overflow-x-auto touch-pan-x ${styles["hide-scrollbar"]}`}
+            className="flex items-stretch gap-4 sm:gap-6 md:gap-8 overflow-x-auto touch-pan-x hide-scrollbar"
             style={{
               width: "200%",
             }}
@@ -188,7 +185,7 @@ export default function ClientsSection() {
               },
               {
                 src: "/clientLogo/dr_shakuntala_misra_university.webp",
-                name: "Dr. Shakuntala Mishra National Rehabilitation University",
+                name: "Dr. Shakuntala Mishra National Rehab University",
                 location: "Lucknow, UP",
                 hasLogo: true,
               },
@@ -329,7 +326,7 @@ export default function ClientsSection() {
                     scale: 1.05,
                     transition: { duration: 0.3 },
                   }}
-                  className="bg-[#0a0d14]/95 border-2 border-[#00f2ff]/40 rounded-2xl p-4 sm:p-5 md:p-6 shadow-2xl hover:border-[#00f2ff]/80 hover:shadow-[#00f2ff]/20 transition-all duration-500 group backdrop-blur-sm flex-shrink-0 overflow-hidden flex flex-col items-center justify-between min-w-[140px] sm:min-w-[180px] md:min-w-[220px] w-[140px] sm:w-[180px] md:w-[220px] h-[200px] sm:h-[260px] md:h-[300px]"
+                  className="bg-[#0a0d14]/95 border-2 border-[#00f2ff]/40 rounded-2xl p-4 sm:p-5 md:p-6 xl:p-8 shadow-2xl hover:border-[#00f2ff]/80 hover:shadow-[#00f2ff]/20 transition-all duration-500 group backdrop-blur-sm flex-shrink-0 overflow-hidden flex flex-col items-center justify-between min-w-[140px] sm:min-w-[180px] md:min-w-[220px] xl:min-w-[280px] w-[140px] sm:w-[180px] md:w-[220px] xl:w-[280px] h-[200px] sm:h-[260px] md:h-[300px] xl:h-[360px]"
                 >
                   {client.hasLogo ? (
                     /* Logo Card */
@@ -343,11 +340,11 @@ export default function ClientsSection() {
                           />
                         </div>
                       </div>
-                      <div className="text-center w-full px-1">
-                        <h4 className="font-orbitron text-white text-[0.65rem] sm:text-xs md:text-sm mb-1 sm:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase break-words">
+                      <div className="text-center w-full px-2">
+                        <h4 className="font-century-gothic text-white text-[0.65rem] sm:text-xs md:text-sm mb-1 sm:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight">
                           {client.name}
                         </h4>
-                        <p className="text-[#e0e0ff]/60 text-[0.6rem] sm:text-[0.7rem] md:text-xs font-orbitron uppercase">
+                        <p className="text-[#e0e0ff]/60 text-[0.6rem] sm:text-[0.7rem] md:text-xs font-century-gothic uppercase">
                           {client.location}
                         </p>
                       </div>
@@ -362,11 +359,11 @@ export default function ClientsSection() {
                           </div>
                         </div>
                       </div>
-                      <div className="text-center w-full px-1">
-                        <h4 className="font-orbitron text-white text-[0.65rem] sm:text-xs md:text-sm mb-1 sm:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight uppercase break-words">
+                      <div className="text-center w-full px-2">
+                        <h4 className="font-century-gothic text-white text-[0.65rem] sm:text-xs md:text-sm mb-1 sm:mb-2 group-hover:text-[#00f2ff] transition-colors duration-300 leading-tight ">
                           {client.name}
                         </h4>
-                        <p className="text-[#e0e0ff]/60 text-[0.6rem] sm:text-[0.7rem] md:text-xs font-orbitron uppercase">
+                        <p className="text-[#e0e0ff]/60 text-[0.6rem] sm:text-[0.7rem] md:text-xs font-century-gothic ">
                           {client.location}
                         </p>
                       </div>

@@ -8,7 +8,8 @@ export default function ContactSection() {
           <h3 className="font-orbitron text-3xl md:text-4xl text-[#00f2ff] mb-4 uppercase tracking-widest">
             Start Your Project
           </h3>
-          <p className="text-[#e0e0ff]/80 text-lg mb-8">
+          <p className="text-[#00f2ff] text-lg mb-8">
+            {/* <p className="text-[#e0e0ff]/80 text-lg mb-8"> */}
             Get in touch with us to discuss your requirements
           </p>
         </div>

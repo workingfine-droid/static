@@ -21,7 +21,7 @@ export default function SolutionsSection() {
             <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
               Complete IT Solution
             </h4>
-            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-century-gothic">
               Comprehensive IT infrastructure services covering campus
               networking, IP surveillance, system integration, and secure
               digital environments for organizations of all sizes.
@@ -38,7 +38,7 @@ export default function SolutionsSection() {
             <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
               Data Capture & Processing Systems
             </h4>
-            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-century-gothic">
               Automated OMR, ICR, OCR and intelligent data workflows for
               high-volume, high-accuracy data processing.
             </p>
@@ -54,7 +54,7 @@ export default function SolutionsSection() {
             <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
               Custom Software Development
             </h4>
-            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-century-gothic">
               End-to-end development of web and enterprise applications tailored
               to your business needs.
             </p>
@@ -70,7 +70,7 @@ export default function SolutionsSection() {
             <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
               ICR/OMR Examination Platforms
             </h4>
-            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-century-gothic">
               Complete examination processing solutions from form design to
               result generation.
             </p>
@@ -86,7 +86,7 @@ export default function SolutionsSection() {
             <h4 className="font-orbitron text-xl text-white mb-3 uppercase tracking-wide">
               Technical Support & Managed Services
             </h4>
-            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-orbitron">
+            <p className="text-[#e0e0ff]/80 text-sm leading-relaxed font-century-gothic">
               24/7 hardware, network, and software support for uninterrupted
               business operations.
             </p>
