@@ -1,15 +1,144 @@
+
+@import "@fontsource/orbitron";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Brand Colors */
+    --color-primary: #00f2ff;
+    --color-primary-light: #33f4ff;
+    --color-primary-dark: #00d9e6;
+    --color-secondary: #7000ff;
+    --color-secondary-light: #8c33ff;
+    --color-secondary-dark: #5c00d9;
+    
+    /* Background Colors */
+    --color-bg: #020205;
+    --color-bg-card: #10131a;
+    --color-bg-card-dark: #0a0d14;
+    
+    /* Text Colors */
+    --color-text-primary: #e0e0ff;
+    --color-text-secondary: #ffffff;
+    
+    /* Border Colors */
+    --color-border-primary: #00f2ff;
+    --color-border-secondary: #7000ff;
+    
+    /* Font Families */
+    --font-orbitron: 'Orbitron', sans-serif;
+    --font-century-gothic: 'Century Gothic', sans-serif;
+  }
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+  /* Hide scrollbar for all browsers */
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
   body {
     margin: 0;
     padding: 0;
+    font-family: var(--font-century-gothic);
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
   }
+
+  p {
+    @apply font-century-gothic;
+  }
+  li {
+    @apply font-century-gothic;
+  }
+  a {
+    @apply font-century-gothic;
+  }
+  span {
+    @apply font-century-gothic;
+  }
+}
+
+@layer utilities {
+  /* Font Utilities */
+  .font-orbitron {
+    font-family: var(--font-orbitron);
+    letter-spacing: 0.03em;
+  }
+
+
+  .font-century-gothic {
+    font-family: var(--font-century-gothic);
+    letter-spacing: 0.01em;
+  }
+  
+  /* Custom Color Utilities */
+  .text-primary-glow {
+    color: var(--color-primary);
+    text-shadow: 0 0 10px var(--color-primary);
+  }
+  
+  .bg-gradient-cyber {
+    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-card) 100%);
+  }
+  
+  .border-glow-primary {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+  }
+}
+ 
+@keyframes scroll-x-frontend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x-backend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
+@keyframes scroll-x-frontend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x-backend {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-x-dbcloud {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll-x-frontend {
+  animation: scroll-x-frontend 28s linear infinite;
+}
+.animate-scroll-x-backend {
+  animation: scroll-x-backend 32s linear infinite;
+}
+.animate-scroll-x-dbcloud {
+  animation: scroll-x-dbcloud 36s linear infinite;
+}
+/* Hide scrollbar for webkit browsers */
+#client-carousel::-webkit-scrollbar {
+  display: none;
 }
